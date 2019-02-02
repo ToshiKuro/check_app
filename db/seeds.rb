@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-@check_list = Checklist.new
-@check_list.name    = 'プログラミング'
-@check_list.item    = 'Heroku'
-@check_list.address = 'https://jp.heroku.com/'
-@check_list.save
+@list         = List.new
+@list.name    = 'プログラミング'
+@list.item    = 'Heroku'
+@list.address = 'https://jp.heroku.com/'
+@list.saveq
