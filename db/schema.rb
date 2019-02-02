@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_02_072552) do
+ActiveRecord::Schema.define(version: 2019_02_02_083649) do
 
-  create_table "check_lists", force: :cascade do |t|
+  create_table "checklists", force: :cascade do |t|
     t.string "name"
     t.string "item"
     t.string "address"
