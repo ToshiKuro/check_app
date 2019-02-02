@@ -1,4 +1,4 @@
-class CheckListsController < ApplicationController
+class ChecklistsController < ApplicationController
   def index
   end
 
