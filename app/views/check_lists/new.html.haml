@@ -1,0 +1,8 @@
+%h2 利用者新規登録
+
+= form_for Check_lists.new do |f|
+  %p= f.label :リスト名
+  = f.text_field :name
+  %p= f.label :address
+  = f.text_field :address
+  %p= f.submit '登録'
