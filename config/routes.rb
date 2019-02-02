@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'lists/index'
+  get 'lists/new'
+  get 'lists/show'
+  get 'lists/create'
   get 'checklists/index'
   get 'checklists/new'
   get 'checklists/show'
