@@ -1,2 +1,7 @@
-%h1 Uploader#form
-%p Find me in app/views/uploader/form.html.haml
+- @upload = UploadFile.new
+= form_for @upload, :url => {:action => :upload} do |f|
+  = f.label :name, 'name'
+  = f.text_field :name
+  = f.label :file
+  = f.file_field :file
+  = f.submit 'Upload'
