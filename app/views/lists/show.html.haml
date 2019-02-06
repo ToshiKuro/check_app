@@ -1,2 +1,14 @@
-%h1 Lists#show
-%p Find me in app/views/lists/show.html.haml
+/ %h2= @list.name
+
+%table{border: 1}
+  %tr
+    %th ID
+    %th 項目名
+    %th リンク先
+  - @lists.each do |list|
+    %tr
+      %td= list.id
+      %td= list.item
+      %td= list.address
+      %td= link_to '[編集]', lists_edit_path(list)
+      %td= link_to '[削除]', list_delete_path(list), method: :delete, data: {confirm: '削除しますか？'}
