@@ -7,7 +7,85 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 @list         = List.new
-@list.name    = 'プログラミング'
-@list.item    = 'Heroku'
-@list.address = 'https://jp.heroku.com/'
-@list.saveq
+@list.name    = 'IJ201'
+@list.item    = 'BRFGシート'
+@list.address = ''
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ201'
+@list.item    = '飛行実施計画'
+@list.address = ''
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ201'
+@list.item    = '飛行計画'
+@list.address = ''
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ201'
+@list.item    = 'NOTAM'
+@list.address = ''
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ201'
+@list.item    = 'TAF/METER'
+@list.address = ''
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ201'
+@list.item    = 'FBJP'
+@list.address = 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png'
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ201'
+@list.item    = '中国重要天気'
+@list.address = ''
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ202'
+@list.item    = 'BRFGシート'
+@list.address = ''
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ202'
+@list.item    = '飛行実施計画'
+@list.address = ''
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ202'
+@list.item    = '飛行計画'
+@list.address = ''
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ202'
+@list.item    = 'NOTAM'
+@list.address = ''
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ202'
+@list.item    = 'TAF/METER'
+@list.address = ''
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ202'
+@list.item    = 'FBJP'
+@list.address = 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png'
+@list.save
+
+@list         = List.new
+@list.name    = 'IJ202'
+@list.item    = '毎次大気解析'
+@list.address = ''
+@list.save
