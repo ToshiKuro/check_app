@@ -1,2 +1,15 @@
-%h1 Owners#index
-%p Find me in app/views/owners/index.html.haml
+%h2 管理画面
+
+%table{border: 1}
+  %tr
+    %th User
+    %th List
+    - 5.times do |i|
+      %th= "Item#{i + 1}"
+    %th Comment
+    %th Approval
+  / - @lists.each do |list|
+  /   %tr
+  /     %td= list.user
+  /     %td= list.name
+  /     %td= list.item
