@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'owners/index'
+  get 'owners/new'
+  get 'owners/show'
+  get 'owners/create'
+  get 'owners/edit'
+  get 'owners/update'
+  get 'owners/destroy'
   get    'lists',          to: 'lists#index'
   get    'lists/new',      to: 'lists#new'
   get    'lists/:name',    to: 'lists#show'
