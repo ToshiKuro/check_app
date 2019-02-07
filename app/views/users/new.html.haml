@@ -1,2 +1,22 @@
-%h1 Users#new
-%p Find me in app/views/users/new.html.haml
+%h2 ユーザー 新規登録
+
+= form_for User.new do |f|
+  %p= f.label :名前
+  = f.text_field :name
+  %p= f.label :list
+  = f.text_field :list1
+  %p= f.label :list2
+  = f.text_field :list2
+  %p= f.label :list3
+  = f.text_field :list3
+  %p= f.label :list4
+  = f.text_field :list4
+  %p= f.label :list5
+  = f.text_field :list5
+  %p= f.label :list6
+  = f.text_field :list6
+  %p= f.label :list7
+  = f.text_field :list7
+  %p= f.label :list8
+  = f.text_field :list8
+  %p= f.submit :登録

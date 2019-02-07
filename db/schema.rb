@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_020842) do
+ActiveRecord::Schema.define(version: 2019_02_07_012720) do
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(version: 2019_02_03_020842) do
   create_table "upload_files", force: :cascade do |t|
     t.string "name"
     t.string "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "list1"
+    t.string "list2"
+    t.string "list3"
+    t.string "list4"
+    t.string "list5"
+    t.string "list6"
+    t.string "list7"
+    t.string "list8"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
