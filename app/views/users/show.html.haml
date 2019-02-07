@@ -1,2 +1,22 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+%h2= 'ユーザー確認リスト一覧'
+
+%table{border: 1}
+  %tr
+    %th ID
+    %th ユーザー
+    %th list1
+    %th list2
+    %th list3
+    %th list4
+    %th list5
+    %th list6
+    %th list7
+    %th list8
+
+  - @lists.each do |list|
+    %tr
+      %td= list.id
+      %td= list.item
+      %td= list.address
+      %td= link_to '[編集]', list_edit_path(list)
+      %td= link_to '[削除]', list_delete_path(list), method: :delete, data: {confirm: '削除しますか？'}
