@@ -1,5 +1,6 @@
 class OwnersController < ApplicationController
   def index
+    @users = User.all
   end
 
   def new
@@ -19,4 +20,8 @@ class OwnersController < ApplicationController
 
   def destroy
   end
+
+  def login
+  end
+
 end

@@ -1,15 +1,32 @@
-%h2 管理画面
+%h2= 'PIC 確認リスト一覧'
+%p= button_to 'Logout', owners_login_path, method: :get
 
 %table{border: 1}
   %tr
-    %th User
-    %th List
-    - 10.times do |i|
-      %th= "Item#{i + 1}"
-    %th Comment
-    %th Approval
-  / - @lists.each do |list|
-  /   %tr
-  /     %td= list.user
-  /     %td= list.name
-  /     %td= list.item
+    %th ID
+    %th ユーザー
+    %th list1
+    %th list2
+    %th list3
+    %th list4
+    %th list5
+    %th list6
+    %th list7
+    %th list8
+
+  - @users.each do |user|
+    %tr
+      %td= user.id
+      %td= user.name
+      %td= user.list1
+      %td= user.list2
+      %td= user.list3
+      %td= user.list4
+      %td= user.list5
+      %td= user.list6
+      %td= user.list7
+      %td= user.list8
+      %td= link_to '[編集]', user_edit_path(user)
+      %td= link_to '[削除]', user_delete_path(user), method: :delete, data: {confirm: '削除しますか？'}
+
+%p= button_to '新規登録', users_new_path, method: :get

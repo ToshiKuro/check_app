@@ -9,6 +9,7 @@
     %tr
       %td= list.id
       %td= list.item
-      %td= list.address
+      %td
+        =link_to list.address, list.address
       %td= link_to '[編集]', list_edit_path(list)
       %td= link_to '[削除]', list_delete_path(list), method: :delete, data: {confirm: '削除しますか？'}

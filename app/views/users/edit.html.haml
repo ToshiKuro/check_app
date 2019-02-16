@@ -1,9 +1,6 @@
 %h2 ユーザー確認リスト編集画面
 
 = form_for @user, url: user_update_path(@user) do |f|
-  / %p= f.label :名前
-  / = f.text_field :name
-  / %p
   = f.label :list1
   =f.collection_select :list1, List.group(:name).order(:name), :name, :name, include_blank: :true
   %p

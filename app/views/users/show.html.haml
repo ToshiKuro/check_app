@@ -1,22 +1,17 @@
-%h2= 'ユーザー確認リスト一覧'
+%body{bgcolor: '#C0C0C0'}
 
-%table{border: 1}
-  %tr
-    %th ID
-    %th ユーザー
-    %th list1
-    %th list2
-    %th list3
-    %th list4
-    %th list5
-    %th list6
-    %th list7
-    %th list8
+%p
+  = 'PIC： ' + "#{@user.name}"
+  = button_to 'Logout', owners_login_path, method: :get
 
-  - @lists.each do |list|
-    %tr
-      %td= list.id
-      %td= list.item
-      %td= list.address
-      %td= link_to '[編集]', list_edit_path(list)
-      %td= link_to '[削除]', list_delete_path(list), method: :delete, data: {confirm: '削除しますか？'}
+%table{border: 1, height: 800, width: 1200}
+  %tr{height: 20}
+    %th{width: '10%'}
+    %th{width: '90%'}
+  %tr{height: 780}
+    %td
+      - @lists.each do |item|
+        = button_to item, user_item_path(item:{name: item, user_name: @user.name})
+
+    %td
+      %object{data: "#{@image}"}
