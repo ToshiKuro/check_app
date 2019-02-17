@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  require 'pry'
-
   def index
   end
 
