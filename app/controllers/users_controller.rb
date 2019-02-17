@@ -16,7 +16,11 @@ class UsersController < ApplicationController
   end
 
   def create
+    binding.pry
     user = User.create(user_params)
+    params[:flight_number].each do |flight_number_name|
+      user.flight_numbers.create(name: flight_number_name[0])
+    end
     redirect_to owners_index_path
   end
 
@@ -54,7 +58,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :list1, :list2, :list3, :list4, :list5, :list6, :list7, :list8)
+    params.require(:user).permit(:name)
+  end
+
+  def flight_number_params
+    params.require(:flight_number).permit(:name)
   end
 
 end
