@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_07_012720) do
+ActiveRecord::Schema.define(version: 2019_02_17_115711) do
+
+  create_table "flight_numbers", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_flight_numbers_on_user_id"
+  end
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
@@ -29,14 +37,6 @@ ActiveRecord::Schema.define(version: 2019_02_07_012720) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "list1"
-    t.string "list2"
-    t.string "list3"
-    t.string "list4"
-    t.string "list5"
-    t.string "list6"
-    t.string "list7"
-    t.string "list8"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
