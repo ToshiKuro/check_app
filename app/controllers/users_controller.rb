@@ -10,12 +10,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(name: params[:user][:name])
-    @lists = @user.attributes.values
-    @lists.slice!(-2,2)
-    @lists.shift(2)
-    @lists = @lists.uniq.reject(&:blank?)
-    @items = List.where(name: @lists)
-    # @items = List.where(name: @lists).select(:address).distinct
+    list_names = @user.attributes.values
+    list_names.slice!(-2,2)
+    list_names.shift(2)
+    list_names = list_names.uniq.reject(&:blank?)
+    @items = List.item_select(list_names)
   end
 
   def create
@@ -45,11 +44,11 @@ class UsersController < ApplicationController
   def user_item
     @image = List.find(params[:item][:id].to_i).address
     @user = User.find_by(name: params[:item][:user_name])
-    @lists = @user.attributes.values
-    @lists.slice!(-2,2)
-    @lists.shift(2)
-    @lists = @lists.uniq.reject(&:blank?)
-    @items = List.where(name: @lists)
+    list_names = @user.attributes.values
+    list_names.slice!(-2,2)
+    list_names.shift(2)
+    list_names = list_names.uniq.reject(&:blank?)
+    @items = List.item_select(list_names)
     render 'show'
     # redirect_to action: 'show'
   end
