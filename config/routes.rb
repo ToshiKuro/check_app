@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/new'
   get 'users/show', to: 'users#show'
-  post 'user/item', to: 'users#user_list_item', as: 'user_item'
+  post 'user/item', to: 'users#user_item', as: 'user_item'
   post 'users',         to: 'users#create'
   get 'users/:id/edit', to: 'users#edit',    as: 'user_edit'
   patch  'users/:id',   to: 'users#update',  as: 'user_update'

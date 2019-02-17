@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  require 'pry'
+
   def index
   end
 
@@ -12,6 +14,8 @@ class UsersController < ApplicationController
     @lists.slice!(-2,2)
     @lists.shift(2)
     @lists = @lists.uniq.reject(&:blank?)
+    @items = List.where(name: @lists)
+    # @items = List.where(name: @lists).select(:address).distinct
   end
 
   def create
@@ -38,20 +42,16 @@ class UsersController < ApplicationController
     redirect_to owners_index_path
   end
 
-  def user_list_item
-    if params[:item][:name] == 'IJ201'
-      @image = '/uploads/upload_file/file/2/NOTAM123.pdf'
-    elsif params[:item][:name] == 'IJ202'
-      @image = 'http://www.jma.go.jp/jmh/wmapimgs/lrg_00_auas50.png'
-    else
-      @image = ''
-    end
+  def user_item
+    @image = List.find(params[:item][:id].to_i).address
     @user = User.find_by(name: params[:item][:user_name])
     @lists = @user.attributes.values
     @lists.slice!(-2,2)
     @lists.shift(2)
     @lists = @lists.uniq.reject(&:blank?)
+    @items = List.where(name: @lists)
     render 'show'
+    # redirect_to action: 'show'
   end
 
   private
