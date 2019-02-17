@@ -21,11 +21,12 @@ ActiveRecord::Schema.define(version: 2019_02_17_115711) do
   end
 
   create_table "lists", force: :cascade do |t|
-    t.string "name"
+    t.integer "flight_number_id"
     t.string "item"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["flight_number_id"], name: "index_lists_on_flight_number_id"
   end
 
   create_table "upload_files", force: :cascade do |t|
