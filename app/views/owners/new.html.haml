@@ -1,2 +1,20 @@
-%h1 Owners#new
-%p Find me in app/views/owners/new.html.haml
+%h2 チェック・リスト 新規登録
+
+= form_for User.new do |f|
+  %p= f.label :name, 'New User'
+  = f.text_field :name
+  %p= f.submit :submit
+
+= form_for List.new do |f|
+  %p= f.label :name, 'New List'
+  = f.text_field :name
+  %p= f.submit :submit
+
+= form_for Item.new do |f|
+  %p= f.label :name, 'New Item'
+  = f.text_field :name
+  %p= f.label :list_id
+  = f.text_field :list_id
+  %p= f.label :path
+  = f.text_field :path
+  %p= f.submit :submit

@@ -5,6 +5,6 @@
   = f.text_field :name
   %p
   - List.group(:name).each do |list|
-    = check_box :flight_number, list.name
+    = check_box :list, list.name
     = label_tag list.name, list.name
   %p= f.submit :登録

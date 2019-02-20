@@ -1,8 +1,5 @@
 class ListsController < ApplicationController
 
-  require 'pry'
-    # render plain: @list.inspect
-
   def index
   end
 
@@ -16,7 +13,8 @@ class ListsController < ApplicationController
 
   def create
     list = List.create(list_params)
-    redirect_to action: 'show', name: list.name
+    redirect_to owners_index_path
+    # redirect_to action: 'show', name: list.name
   end
 
   def edit

@@ -10,23 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_17_115711) do
+ActiveRecord::Schema.define(version: 2019_02_19_010036) do
 
-  create_table "flight_numbers", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "items", force: :cascade do |t|
     t.string "name"
+    t.integer "list_id_id"
+    t.string "path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_flight_numbers_on_user_id"
+    t.index ["list_id_id"], name: "index_items_on_list_id_id"
   end
 
   create_table "lists", force: :cascade do |t|
-    t.integer "flight_number_id"
-    t.string "item"
-    t.string "address"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["flight_number_id"], name: "index_lists_on_flight_number_id"
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "upload_files", force: :cascade do |t|

@@ -1,20 +1,31 @@
-%h2= 'PIC 確認リスト一覧'
-%p= button_to 'Logout', owners_login_path, method: :get
+/ %h2= 'PIC 確認リスト一覧'
+/ %p= button_to 'Logout', owners_login_path, method: :get
 
-%table{border: 1}
-  %tr
-    %th 編集
-    %th 削除
-    %th ID
-    %th ユーザー
+/ %table{border: 1}
+/   %tr
+/     %th 編集
+/     %th 削除
+/     %th ID
+/     %th ユーザー
 
-  - @users.each do |user|
-    %tr
-      %td= link_to '[編集]', user_edit_path(user)
-      %td= link_to '[削除]', user_delete_path(user), method: :delete, data: {confirm: '削除しますか？'}
-      %td= user.id
-      %td= user.name
-      - user.flight_numbers.each do |flight_number|
-        %td= flight_number.name
+/   - @users.each do |user|
+/     %tr
+/       %td= link_to '[編集]', user_edit_path(user)
+/       %td= link_to '[削除]', user_delete_path(user), method: :delete, data: {confirm: '削除しますか？'}
+/       %td= user.id
+/       %td= user.name
+/       - user.lists.each do |list|
+/         %td= list.name
 
-%p= button_to '新規登録', users_new_path, method: :get
+/ %p= button_to '新規登録', users_new_path, method: :get
+
+
+
+- @users.each do |user|
+  %p= user.name
+
+- @lists.each do |list|
+  %p= list.name
+
+- @items.each do |item|
+  %p= item.name
