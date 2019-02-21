@@ -54,123 +54,123 @@ list.save
 # （List）Item登録
 item         = Item.new
 item.list_id = 1
-item.item    = '計画書'
+item.name    = '計画書'
 item.path    = '/uploads/upload_file/file/4/pln201.pdf'
 item.save
 
 item         = Item.new
 item.list_id = 1
-item.item    = 'INFORMATION'
+item.name    = 'INFORMATION'
 item.path    = '/uploads/upload_file/file/2/NOTAM201.pdf'
 item.save
 
 item         = Item.new
 item.list_id = 1
-item.item    = '資料１'
+item.name    = '資料１'
 item.path    = 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png'
 item.save
 
 item         = Item.new
 item.list_id = 1
-item.item    = '資料２'
+item.name    = '資料２'
 item.path    = '/uploads/upload_file/file/1/QMCD98_RJTT.png'
 item.save
 
 item         = Item.new
 item.list_id = 1
-item.item    = 'メモ'
+item.name    = 'メモ'
 item.path    = '/uploads/upload_file/file/1/QMCD98_RJTT.png'
 item.save
 
 
 item         = Item.new
 item.list_id = 2
-item.item    = '計画書'
+item.name    = '計画書'
 item.path    = '/uploads/upload_file/file/4/pln201.pdf'
 item.save
 
 item         = Item.new
 item.list_id = 2
-item.item    = 'INFORMATION'
+item.name    = 'INFORMATION'
 item.path    = '/uploads/upload_file/file/2/NOTAM201.pdf'
 item.save
 
 item         = Item.new
 item.list_id = 2
-item.item    = '資料１'
+item.name    = '資料１'
 item.path    = 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png'
 item.save
 
 item         = Item.new
 item.list_id = 2
-item.item    = '資料２'
+item.name    = '資料２'
 item.path    = '/uploads/upload_file/file/1/QMCD98_RJTT.png'
 item.save
 
 item         = Item.new
 item.list_id = 2
-item.item    = 'メモ'
+item.name    = 'メモ'
 item.path    = '/uploads/upload_file/file/1/QMCD98_RJTT.png'
 item.save
 
 
 item         = Item.new
 item.list_id = 3
-item.item    = '計画書'
+item.name    = '計画書'
 item.path    = '/uploads/upload_file/file/4/pln201.pdf'
 item.save
 
 item         = Item.new
 item.list_id = 3
-item.item    = 'INFORMATION'
+item.name    = 'INFORMATION'
 item.path    = '/uploads/upload_file/file/2/NOTAM201.pdf'
 item.save
 
 item         = Item.new
 item.list_id = 3
-item.item    = '資料１'
+item.name    = '資料１'
 item.path    = 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png'
 item.save
 
 item         = Item.new
 item.list_id = 3
-item.item    = '資料２'
+item.name    = '資料２'
 item.path    = '/uploads/upload_file/file/1/QMCD98_RJTT.png'
 item.save
 
 item         = Item.new
 item.list_id = 3
-item.item    = 'メモ'
+item.name    = 'メモ'
 item.path    = '/uploads/upload_file/file/1/QMCD98_RJTT.png'
 item.save
 
 
 item         = Item.new
 item.list_id = 4
-item.item    = '計画書'
+item.name    = '計画書'
 item.path    = '/uploads/upload_file/file/4/pln201.pdf'
 item.save
 
 item         = Item.new
 item.list_id = 4
-item.item    = 'INFORMATION'
+item.name    = 'INFORMATION'
 item.path    = '/uploads/upload_file/file/2/NOTAM201.pdf'
 item.save
 
 item         = Item.new
 item.list_id = 4
-item.item    = '資料１'
+item.name    = '資料１'
 item.path    = 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png'
 item.save
 
 item         = Item.new
 item.list_id = 4
-item.item    = '資料２'
+item.name    = '資料２'
 item.path    = '/uploads/upload_file/file/1/QMCD98_RJTT.png'
 item.save
 
 item         = Item.new
 item.list_id = 4
-item.item    = 'メモ'
+item.name    = 'メモ'
 item.path    = '/uploads/upload_file/file/1/QMCD98_RJTT.png'
 item.save

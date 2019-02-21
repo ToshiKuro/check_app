@@ -13,12 +13,12 @@
 ActiveRecord::Schema.define(version: 2019_02_19_010036) do
 
   create_table "items", force: :cascade do |t|
+    t.integer "list_id"
     t.string "name"
-    t.integer "list_id_id"
     t.string "path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["list_id_id"], name: "index_items_on_list_id_id"
+    t.index ["list_id"], name: "index_items_on_list_id"
   end
 
   create_table "lists", force: :cascade do |t|

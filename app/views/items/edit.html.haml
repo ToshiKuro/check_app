@@ -1,0 +1,13 @@
+%h2 List Item Edit View
+
+= form_for @item, url: item_update_path(@item)  do |f|
+  = f.label :name, 'Item Edit'
+  = f.text_field :name
+  %br
+  = f.label :list_id
+  = f.collection_select :list_id, List.group(:name).order(:name), :id, :name, include_blank: :true
+  %br
+  = f.label :path
+  = f.text_field :path
+  %br
+  = f.submit :submit

@@ -1,9 +1,9 @@
 class OwnersController < ApplicationController
 
   def index
-    @users = User.all
-    @users = List.all
-    @users = Item.all
+    @users = User.all.order(:name)
+    @lists = List.all.order(:name)
+    @items = Item.all
   end
 
   def new

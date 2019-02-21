@@ -12,33 +12,33 @@ class ItemsController < ApplicationController
   end
 
   def create
-    list = List.create(list_params)
-    redirect_to action: 'show', name: list.name
+    item = Item.create(item_params)
+    redirect_to owners_index_path
   end
 
   def edit
-    @list = List.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def update
-    list = List.find(params[:id])
-    if list.update(list_params)
-      redirect_to action: 'show', name: list.name
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      redirect_to owners_index_path
     else
       render 'edit'
     end
   end
 
   def destroy
-    list = List.find(params[:id])
-    list.destroy
-    redirect_to action: 'show', name: list.name
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to owners_index_path
   end
 
   private
 
-  def list_params
-    params.require(:list).permit(:id, :name, :item, :address)
+  def item_params
+    params.require(:item).permit(:id, :name, :list_id, :path)
   end
 
 end

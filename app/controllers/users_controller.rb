@@ -16,11 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
     user = User.create(user_params)
-    params[:list].each do |list|
-      user.lists.create(name: list[0])
-    end
     redirect_to owners_index_path
   end
 

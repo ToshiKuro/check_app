@@ -1,20 +1,24 @@
-%h2 チェック・リスト 新規登録
+%h2 All Sign Up View
 
 = form_for User.new do |f|
-  %p= f.label :name, 'New User'
+  %h3= f.label :name, 'New User'
   = f.text_field :name
-  %p= f.submit :submit
+  = f.submit :submit
 
 = form_for List.new do |f|
-  %p= f.label :name, 'New List'
+  %h3= f.label :name, 'New List'
   = f.text_field :name
-  %p= f.submit :submit
+  = f.submit :submit
 
+%h3 New Item
 = form_for Item.new do |f|
-  %p= f.label :name, 'New Item'
+  = f.label :name, 'Item Name'
   = f.text_field :name
-  %p= f.label :list_id
-  = f.text_field :list_id
-  %p= f.label :path
+  %br
+  = f.label :list_id
+  = f.collection_select :list_id, List.group(:name).order(:name), :id, :name, include_blank: :true
+  %br
+  = f.label :path
   = f.text_field :path
-  %p= f.submit :submit
+  %br
+  = f.submit :submit

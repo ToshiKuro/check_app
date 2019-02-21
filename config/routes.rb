@@ -28,6 +28,14 @@ Rails.application.routes.draw do
   patch  'lists/:id',      to: 'lists#update',  as: 'list_update'
   delete 'lists/:id',      to: 'lists#destroy', as: 'list_delete'
 
+  get 'items/index'
+  get 'items/new'
+  get 'items/show'
+  post 'items',         to: 'items#create'
+  get    'items/:id/edit', to: 'items#edit',    as: 'item_edit'
+  patch  'items/:id',      to: 'items#update',  as: 'item_update'
+  delete 'items/:id',      to: 'items#destroy', as: 'item_delete'
+
   get 'uploader/index'
   get 'uploader/form'
   post 'uploader/upload'
