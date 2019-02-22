@@ -10,8 +10,10 @@
     %th{width: '90%'}
   %tr{height: 780}
     %td
-      - @items.each do |item|
-        = button_to item.item, user_item_path(item:{id: item.id, user_name: @user.name})
+      - @user.lists.each do |list|
+        - list.items.each do |item|
+          / = button_to item.name, user_item_path(item)
+          = button_to item.name, user_item_path(item:{id: item.id, user_name: @user.name})
 
     %td
       %object{data: "#{@image}"}

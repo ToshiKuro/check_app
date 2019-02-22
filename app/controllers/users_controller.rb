@@ -8,11 +8,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(name: params[:user][:name])
-    list_names = @user.attributes.values
-    list_names.slice!(-2,2)
-    list_names.shift(2)
-    list_names = list_names.uniq.reject(&:blank?)
-    @items = List.item_select(list_names)
   end
 
   def create
@@ -40,15 +35,10 @@ class UsersController < ApplicationController
   end
 
   def user_item
-    @image = List.find(params[:item][:id].to_i).address
+    @image = Item.find(params[:item][:id]).path
     @user = User.find_by(name: params[:item][:user_name])
-    list_names = @user.attributes.values
-    list_names.slice!(-2,2)
-    list_names.shift(2)
-    list_names = list_names.uniq.reject(&:blank?)
-    @items = List.item_select(list_names)
+    # @items = List.item_select(list_names)
     render 'show'
-    # redirect_to action: 'show'
   end
 
   private

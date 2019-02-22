@@ -8,7 +8,7 @@ class ListsController < ApplicationController
 
   def show
     @list  = List.find(params[:format])
-    @items = Item.where(list_id: params[:format])
+    # @items = Item.where(list_id: params[:format])
   end
 
   def create

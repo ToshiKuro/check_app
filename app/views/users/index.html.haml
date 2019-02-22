@@ -7,6 +7,8 @@
     = f.collection_select :name, User.group(:name).order(:name), :name, :name, include_blank: :true
     = f.submit 'Select'
 
+= button_to 'Logout', owners_login_path, method: :get
+
 %table{border: 1, height: 800, width: 1200}
   %tr{height: 20}
     %th{width: '10%'}

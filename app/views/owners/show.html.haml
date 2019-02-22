@@ -1,4 +1,7 @@
 %h2 Owner Monitoring View
+= button_to 'All list', owners_index_path, method: :get
+= button_to 'Sign Up', owners_list_new_path, method: :get
+= button_to 'Logout', owners_login_path, method: :get
 
 %table{border: 1, align: 'left'}
   %tr

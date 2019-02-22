@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
-  has_many :lists, through: :owners
   has_many :owners
+  has_many :lists, through: :owners
 
 end
 
