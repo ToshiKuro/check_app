@@ -1,0 +1,7 @@
+%table{border: 1}
+  %tr
+    %th User name
+  - @owners.each do |owner|
+    %tr
+      %td= owner.user
+      %td= owner.list

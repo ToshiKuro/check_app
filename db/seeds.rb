@@ -8,47 +8,29 @@
 
 
 # User登録
-user         = User.new
-user.name    = '鈴木一郎'
-user.save
-
-user         = User.new
-user.name    = '田中二郎'
-user.save
-
-user         = User.new
-user.name    = '佐藤三郎'
-user.save
-
-user         = User.new
-user.name    = '高橋四郎'
-user.save
-
-user         = User.new
-user.name    = '伊藤五郎'
-user.save
-
-user         = User.new
-user.name    = '山本六郎'
-user.save
+User.create(name: '鈴木一郎')
+User.create(name: '田中二郎')
+User.create(name: '佐藤三郎')
+User.create(name: '高橋四郎')
+User.create(name: '伊藤五郎')
+User.create(name: '山本六郎')
 
 
 # List登録
-list         = List.new
-list.name    = 'a101'
-list.save
+List.create(name: 'a101')
+List.create(name: 'a102')
+List.create(name: 'b201')
+List.create(name: 'b202')
 
-list         = List.new
-list.name    = 'a102'
-list.save
 
-list         = List.new
-list.name    = 'b201'
-list.save
-
-list         = List.new
-list.name    = 'b202'
-list.save
+#中間テーブル（owners table）
+Owner.create(user_id: 1, list_id: 1)
+Owner.create(user_id: 1, list_id: 2)
+Owner.create(user_id: 1, list_id: 3)
+Owner.create(user_id: 2, list_id: 2)
+Owner.create(user_id: 2, list_id: 4)
+Owner.create(user_id: 3, list_id: 3)
+Owner.create(user_id: 3, list_id: 1)
 
 
 # （List）Item登録
@@ -174,3 +156,6 @@ item.list_id = 4
 item.name    = 'メモ'
 item.path    = '/uploads/upload_file/file/1/QMCD98_RJTT.png'
 item.save
+
+
+

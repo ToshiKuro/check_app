@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   delete 'users/:id',   to: 'users#destroy', as: 'user_delete'
 
   get 'owners/index'
+  get 'owners/monitoring'
+  get 'owners/list_new'
   get 'owners/new'
+  post 'owners',         to: 'owners#create'
   get 'owners/show'
   get 'owners/create'
   get 'owners/edit'
@@ -20,9 +23,10 @@ Rails.application.routes.draw do
   get 'owners/destroy'
   get 'owners/login'
 
+
   get    'lists',          to: 'lists#index'
   get    'lists/new',      to: 'lists#new'
-  get    'lists/:name',    to: 'lists#show'
+  get    'lists/show',     to: 'lists#show'
   post   'lists',          to: 'lists#create'
   get    'lists/:id/edit', to: 'lists#edit',    as: 'list_edit'
   patch  'lists/:id',      to: 'lists#update',  as: 'list_update'

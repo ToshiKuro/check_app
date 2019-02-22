@@ -1,5 +1,5 @@
 %h2= 'All Lists View'
-= button_to 'Sign Up', owners_new_path, method: :get
+= button_to 'Sign Up', owners_list_new_path, method: :get
 
 %table{border: 1, align: 'left'}
   %tr
@@ -36,7 +36,7 @@
       %th Path
     - @items.each do |item|
       %tr
-        %td= List.find(item.list_id).name
+        %td= item.list.name
         %td= item.name
         %td= link_to item.path, item.path
         %td= link_to '[Edit]', item_edit_path(item)

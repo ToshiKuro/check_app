@@ -7,8 +7,8 @@ class ListsController < ApplicationController
   end
 
   def show
-    @lists = List.where(name: params[:name])
-    @title = List.find_by(name: params[:name])
+    @list  = List.find(params[:format])
+    @items = Item.where(list_id: params[:format])
   end
 
   def create

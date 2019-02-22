@@ -1,2 +1,22 @@
-%h1 Owners#show
-%p Find me in app/views/owners/show.html.haml
+%h2 Owner Monitoring View
+
+%table{border: 1, align: 'left'}
+  %tr
+    %th User name
+    %th List name
+  - @owners.each do |owner|
+    %tr
+      %td= User.find(owner.user_id).name
+      %td= link_to List.find(owner.list_id).name, lists_show_path(owner.list_id)
+      - List.find(owner.list_id).items.each do |item|
+        %td= link_to item.name, item.path
+
+
+
+/ - @users.each do |users|
+/   - users.owners.each do |user|
+/     = user.user.name
+/     = user.list.name
+/     - user.list.items.each do |item|
+/       = item.name
+/     %br

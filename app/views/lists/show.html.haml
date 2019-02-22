@@ -1,15 +1,12 @@
-%h2= @title.name + '確認項目一覧'
+%h2= @list.name + ' Items'
 
 %table{border: 1}
   %tr
-    %th ID
-    %th 項目名
-    %th リンク先
-  - @lists.each do |list|
+    %th Item name
+    %th Path
+  - @items.each do |item|
     %tr
-      %td= list.id
-      %td= list.item
-      %td
-        =link_to list.address, list.address
-      %td= link_to '[編集]', list_edit_path(list)
-      %td= link_to '[削除]', list_delete_path(list), method: :delete, data: {confirm: '削除しますか？'}
+      %td= item.name
+      %td= link_to item.path, item.path
+      %td= link_to '[Edit]', item_edit_path(item)
+      %td= link_to '[Delete]', item_delete_path(item), method: :delete, data: {confirm: '削除しますか？'}

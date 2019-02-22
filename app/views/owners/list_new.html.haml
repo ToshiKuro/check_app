@@ -1,0 +1,24 @@
+%h2 All Sign Up View
+
+= form_for User.new do |f|
+  %h3= f.label :name, 'New User'
+  = f.text_field :name
+  = f.submit :submit
+
+= form_for List.new do |f|
+  %h3= f.label :name, 'New List'
+  = f.text_field :name
+  = f.submit :submit
+
+%h3 New Item
+= form_for Item.new do |f|
+  = f.label :name, 'Item Name'
+  = f.text_field :name
+  %br
+  = f.label :list_id
+  = f.collection_select :list_id, List.group(:name).order(:name), :id, :name, include_blank: :true
+  %br
+  = f.label :path
+  = f.text_field :path
+  %br
+  = f.submit :submit
