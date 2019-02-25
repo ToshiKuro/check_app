@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(name: params[:user][:name])
+    @items = Item.where(list_id: @user.lists).order(:name).group(:path)
   end
 
   def create
@@ -37,8 +38,12 @@ class UsersController < ApplicationController
   def user_item
     @image = Item.find(params[:item][:id]).path
     @user = User.find_by(name: params[:item][:user_name])
-    # @items = List.item_select(list_names)
+    @items = Item.where(list_id: @user.lists).order(:name).group(:path)
     render 'show'
+  end
+
+  def acknowledgment
+    # binding.pry
   end
 
   private

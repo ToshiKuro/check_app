@@ -1,4 +1,5 @@
 %h2 User's List Sign Up
+= button_to 'Return', owners_show_path, method: :get
 
 = form_for Owner.new do |f|
   %p= f.label :user

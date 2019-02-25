@@ -9,11 +9,29 @@
     %th{width: '10%'}
     %th{width: '90%'}
   %tr{height: 780}
-    %td
-      - @user.lists.each do |list|
-        - list.items.each do |item|
-          / = button_to item.name, user_item_path(item)
-          = button_to item.name, user_item_path(item:{id: item.id, user_name: @user.name})
+    %td{valign: 'top'}
+
+      / = form_tag(users_acknowledgment_path, method: :post) do
+      /   - @items.each do |item|
+      /     = button_to item.name, user_item_path(item:{id: item.id, user_name: @user.name})
+      /     = check_box_tag :item
+      /   %input{type: 'submit', value: 'Acknowledgment'}/
+
+      = form_for :post, url: users_acknowledgment_path do |f|
+        %table#ack_chk_boxes
+          - @items.each do |item|
+            %tr
+              %td= link_to item.name, user_item_path(item:{id: item.id, user_name: @user.name})
+              %td= check_box :item, item.name, class: 'ack_chk_box'
+        = f.submit :submit, id: 'acknowledgment', disabled: 'disabled'
+
+      / - @items.each do |item|
+      /   = button_to item.name, user_item_path(item:{id: item.id, user_name: @user.name})
+      /   = check_box :item, item.name
+      / = button_to 'Acknowledgment', owners_index_path(:item), method: :get
+
+
 
     %td
       %object{data: "#{@image}"}
+

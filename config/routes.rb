@@ -2,14 +2,15 @@ Rails.application.routes.draw do
 
   root to: 'owners#login'
 
-  get 'users/index'
-  get 'users/new'
-  get 'users/show', to: 'users#show'
-  post 'user/item', to: 'users#user_item', as: 'user_item'
-  post 'users',         to: 'users#create'
-  get 'users/:id/edit', to: 'users#edit',    as: 'user_edit'
-  patch  'users/:id',   to: 'users#update',  as: 'user_update'
-  delete 'users/:id',   to: 'users#destroy', as: 'user_delete'
+  get    'users/index'
+  get    'users/new'
+  get    'users/show',           to: 'users#show'
+  get    'user/item',            to: 'users#user_item'
+  post   'users',                to: 'users#create'
+  get    'users/:id/edit',       to: 'users#edit',    as: 'user_edit'
+  put    'users/:id',            to: 'users#update',  as: 'user_update'
+  delete 'users/:id',            to: 'users#destroy', as: 'user_delete'
+  post   'users/acknowledgment', to: 'users#acknowledgment'
 
   get 'owners/index'
   get 'owners/monitoring'
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
   get    'lists/show',     to: 'lists#show'
   post   'lists',          to: 'lists#create'
   get    'lists/:id/edit', to: 'lists#edit',    as: 'list_edit'
-  patch  'lists/:id',      to: 'lists#update',  as: 'list_update'
+  put    'lists/:id',      to: 'lists#update',  as: 'list_update'
   delete 'lists/:id',      to: 'lists#destroy', as: 'list_delete'
 
   get 'items/index'
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
   get 'items/show'
   post 'items',         to: 'items#create'
   get    'items/:id/edit', to: 'items#edit',    as: 'item_edit'
-  patch  'items/:id',      to: 'items#update',  as: 'item_update'
+  put  'items/:id',      to: 'items#update',  as: 'item_update'
   delete 'items/:id',      to: 'items#destroy', as: 'item_delete'
 
   get 'uploader/index'

@@ -1,5 +1,5 @@
 %h2 All Sign Up View
-= button_to 'Return to Monitoring View', owners_show_path, method: :get
+= button_to 'Return', owners_index_path, method: :get
 
 = form_for User.new do |f|
   %h3= f.label :name, 'New User'

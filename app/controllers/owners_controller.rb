@@ -1,6 +1,7 @@
 class OwnersController < ApplicationController
 
   def index
+    # binding.pry
     @users = User.all.order(:name)
     @lists = List.all.order(:name)
     @items = Item.all.order(:list_id)
@@ -21,6 +22,7 @@ class OwnersController < ApplicationController
   end
 
   def create
+    # binding.pry
     lists = params[:list].select {|k,v| v == "1" }      #check boxでcheckしたものを抽出
     lists.each do |list|
       owner = Owner.new
