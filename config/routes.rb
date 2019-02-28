@@ -18,11 +18,13 @@ Rails.application.routes.draw do
   get 'owners/new'
   post 'owners',         to: 'owners#create'
   get 'owners/show'
+  post 'owners/show'
   get 'owners/create'
   get 'owners/edit'
-  get 'owners/update'
+  patch  'owners/:id',      to: 'owners#update',  as: 'owners/update'
   get 'owners/destroy'
   get 'owners/login'
+  get   'owners/acknowledgment', to: 'owners#acknowledgment'
 
 
   get    'lists',          to: 'lists#index'
@@ -38,7 +40,7 @@ Rails.application.routes.draw do
   get 'items/show'
   post 'items',         to: 'items#create'
   get    'items/:id/edit', to: 'items#edit',    as: 'item_edit'
-  put  'items/:id',      to: 'items#update',  as: 'item_update'
+  patch  'items/:id',      to: 'items#update',  as: 'item_update'
   delete 'items/:id',      to: 'items#destroy', as: 'item_delete'
 
   get 'uploader/index'

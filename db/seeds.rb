@@ -24,13 +24,13 @@ List.create(name: 'b202')
 
 
 #中間テーブル（owners table）
-Owner.create(user_id: 1, list_id: 1)
-Owner.create(user_id: 1, list_id: 2)
-Owner.create(user_id: 1, list_id: 3)
-Owner.create(user_id: 2, list_id: 2)
-Owner.create(user_id: 2, list_id: 4)
-Owner.create(user_id: 3, list_id: 3)
-Owner.create(user_id: 3, list_id: 1)
+Owner.create(user_id: 1, list_id: 1, acknowledgment: '')
+Owner.create(user_id: 1, list_id: 2, acknowledgment: '')
+Owner.create(user_id: 1, list_id: 3, acknowledgment: '')
+Owner.create(user_id: 2, list_id: 2, acknowledgment: '')
+Owner.create(user_id: 2, list_id: 4, acknowledgment: '')
+Owner.create(user_id: 3, list_id: 3, acknowledgment: '')
+Owner.create(user_id: 3, list_id: 1, acknowledgment: '')
 
 
 # （List）Item登録

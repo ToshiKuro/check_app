@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_010036) do
   create_table "owners", force: :cascade do |t|
     t.integer "user_id"
     t.integer "list_id"
+    t.datetime "acknowledgment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -5,6 +5,7 @@ class OwnersController < ApplicationController
     @users = User.all.order(:name)
     @lists = List.all.order(:name)
     @items = Item.all.order(:list_id)
+    @ack_user = ''
   end
 
   def monitoring
@@ -33,10 +34,32 @@ class OwnersController < ApplicationController
     redirect_to owners_show_path
   end
 
+  def acknowledgment
+    # render plain: params.inspect
+    # binding.pry
+    owner = Owner.where(user_id: params[:ack_user].to_i)
+    owner.update(acknowledgment: Time.current)
+    @owners = Owner.all
+    @ack_user = params[:ack_user]
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
+  end
+
   def edit
   end
 
   def update
+    render plain: params.inspect
+    @owners = Owner.all
+    @ack_user = params[:ack_user]
+    owner = Owner.find(params[:id])
+    if item.update(item_params)
+    #   redirect_to owners_index_path
+    # else
+    #   render 'edit'
+    end
   end
 
   def destroy
