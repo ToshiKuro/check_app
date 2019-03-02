@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    # render plain: params.inspect
     item = Item.find(params[:id])
     if item.update(item_params)
       redirect_to owners_index_path

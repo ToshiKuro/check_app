@@ -5,11 +5,15 @@
 ready = ->
 
   $('.ack_chk_box').click ->
+    # alert 'aaaa'
     if $('#ack_chk_boxes :checked').length == $('input.ack_chk_box').length
       $('#acknowledgment').prop 'disabled', false
     else
       $('#acknowledgment').prop 'disabled', true
     return
+
+  # $('.button01').click ->
+    # return
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

@@ -36,14 +36,26 @@ class UsersController < ApplicationController
   end
 
   def user_item
+    # render plain: params.inspect
     @image = Item.find(params[:item][:id]).path
     @user = User.find_by(name: params[:item][:user_name])
     @items = Item.where(list_id: @user.lists).order(:name).group(:path)
-    render 'show'
+    # render 'show'
+    respond_to do |format|                                                  #respond_toメソッドで結果をどのフォーマットで返すかを指定
+      format.html { render :show }
+      format.js { render :show }
+    end
   end
 
   def acknowledgment
-    # binding.pry
+    @user = User.find_by(name: params[:ack_user])
+    @items = Item.where(list_id: @user.lists).order(:name).group(:path)
+    owner = Owner.where(user_id: @user.id)
+    owner.update(acknowledgment: Time.current)
+    respond_to do |format|                                                  #respond_toメソッドで結果をどのフォーマットで返すかを指定
+      format.html { render :show }
+      format.js { render :show }
+    end
   end
 
   private
