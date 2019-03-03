@@ -40,11 +40,11 @@ class UsersController < ApplicationController
     @image = Item.find(params[:item][:id]).path
     @user = User.find_by(name: params[:item][:user_name])
     @items = Item.where(list_id: @user.lists).order(:name).group(:path)
-    # render 'show'
-    respond_to do |format|                                                  #respond_toメソッドで結果をどのフォーマットで返すかを指定
-      format.html { render :show }
-      format.js { render :show }
-    end
+    render 'show'
+    # respond_to do |format|                                                  #respond_toメソッドで結果をどのフォーマットで返すかを指定
+    #   format.html { render :show }
+    #   format.js { render :show }
+    # end
   end
 
   def acknowledgment
@@ -56,6 +56,11 @@ class UsersController < ApplicationController
       format.html { render :show }
       format.js { render :show }
     end
+  end
+
+  def get_image
+    image = Item.find_by(name: params[:image_name]).path
+    render json: {image: image}
   end
 
   private

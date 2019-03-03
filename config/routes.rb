@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   delete 'users/:id',            to: 'users#destroy', as: 'user_delete'
   get    'users/acknowledgment', to: 'users#acknowledgment'
   post   'users/acknowledgment'
+  get    'users/get_image'
 
   get    'owners/index'
   get    'owners/monitoring'

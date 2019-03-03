@@ -14,18 +14,19 @@
         %table#ack_chk_boxes
           - @items.each do |item|
             %tr
-              %td= link_to item.name, user_item_path(item:{id: item.id, user_name: @user.name}), class: 'button01' #, remote: true
+              %td.button01= item.name
               %td= check_box :item, item.name, class: 'ack_chk_box'
 
         = f.hidden_field :ack_user, value: @user.name
         = f.submit 'Acknowledgment', id: 'acknowledgment', disabled: 'disabled'
         %h5#sended= ''
-    %td
-      %object#image{data: "#{@image}"}
+    %td#image
 
 
 
 
+
+      / %td= link_to item.name, user_item_path(item:{id: item.id, user_name: @user.name}), class: 'button01' #, remote: true
 
       / = form_with url: owners_acknowledgment_path, method: :get, local: true do |f|
       /   %table#ack_chk_boxes
