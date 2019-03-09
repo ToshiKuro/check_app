@@ -21,8 +21,13 @@ class ItemsController < ApplicationController
   end
 
   def update
+    # binding.pry
     # render plain: params.inspect
     item = Item.find(params[:id])
+    if params[:file].blank?
+      item.remove_file!
+      item.save
+    end
     if item.update(item_params)
       redirect_to owners_index_path
     else
@@ -39,7 +44,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:id, :name, :list_id, :path)
+    params.require(:item).permit(:id, :name, :list_id, :path, :file)
   end
 
 end

@@ -59,7 +59,13 @@ class UsersController < ApplicationController
   end
 
   def get_image
-    image = Item.find_by(name: params[:image_name]).path
+    # binding.pry
+    image = Item.find_by(name: params[:image_name])
+    if image.file.blank?
+      image = image.path
+    else
+      image = image.file.url
+    end
     render json: {image: image}
   end
 

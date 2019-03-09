@@ -1,6 +1,6 @@
 %h2= 'All Lists View'
-= button_to 'Return', owners_show_path, method: :get
-= button_to 'Sign Up', owners_list_new_path, method: :get
+= button_to 'Monitoring View', owners_show_path, method: :get
+= button_to 'New Create', owners_list_new_path, method: :get
 
 %table{border: 1, align: 'left'}
   %tr
@@ -34,14 +34,26 @@
     %tr
       %th List name
       %th Item name
-      %th Path
+      %th URL
+      %th File
+      %th Edit
+      %th Delete
     - @items.each do |item|
       %tr
         %td= item.list.name
         %td= item.name
-        %td= link_to item.path, item.path
+        %td= link_to item.path, item.path, target: '_blank'
+        %td= link_to item.file, item.file.url, target: '_blank'
         %td= link_to '[Edit]', item_edit_path(item)
         %td= link_to '[Delete]', item_delete_path(item), method: :delete, data: {confirm: '削除しますか？'}
+
+
+
+
+        / - if item.file =! ''
+        /   %td= link_to item.file, item.file.url, target: '_blank'
+        / - else
+        /   %td= link_to item.path, item.path, target: '_blank'
 
 
 

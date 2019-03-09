@@ -18,6 +18,12 @@ class OwnersController < ApplicationController
 
   def show
     @owners = Owner.all
+    @items_max_number = 0
+    @owners.each do |owner|
+      if @items_max_number < List.find(owner.list_id).items.count
+        @items_max_number = List.find(owner.list_id).items.count
+      end
+    end
   end
 
   def create

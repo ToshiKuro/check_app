@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_010036) do
     t.integer "list_id"
     t.string "name"
     t.string "path"
+    t.string "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["list_id"], name: "index_items_on_list_id"

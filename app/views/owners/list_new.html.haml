@@ -1,4 +1,4 @@
-%h2 All Sign Up View
+%h2 New List's Create View
 = button_to 'Return', owners_index_path, method: :get
 
 = form_for User.new do |f|
@@ -19,7 +19,12 @@
   = f.label :list_id
   = f.collection_select :list_id, List.group(:name).order(:name), :id, :name, include_blank: :true
   %br
-  = f.label :path
+  = f.label :path, 'Path：Input URL or Select File'
+  %br
+  = f.label :url, 'URL'
   = f.text_field :path
+  %br
+  = f.label :file
+  = f.file_field :file
   %br
   = f.submit :submit

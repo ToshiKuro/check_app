@@ -4,6 +4,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.references :list, index: true
       t.string     :name
       t.string     :path
+      t.string     :file
       
       t.timestamps
     end

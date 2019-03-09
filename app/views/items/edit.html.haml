@@ -1,5 +1,7 @@
 %h2 List Item Edit View
-= button_to 'Return to Monitoring View', owners_show_path, method: :get
+/ = button_to 'Return to Monitoring View', owners_show_path, method: :get
+/ = link_to 'Return', :back
+= button_to 'Return', :back, method: :get
 
 = form_for @item, url: item_update_path(@item)  do |f|
   = f.label :name, 'Item Edit'
@@ -10,5 +12,11 @@
   %br
   = f.label :path
   = f.text_field :path
+  %br
+  = f.label :file
+  = f.text_field :file
+  %br
+  = f.label '⇨'
+  = f.file_field :file
   %br
   = f.submit :submit
