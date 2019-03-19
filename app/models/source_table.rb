@@ -50,10 +50,6 @@ class SourceTable
         table_tr = []
       end
 
-      # # 別タブで展開
-      # driver.execute_script("window.open()") #make new tab
-      # driver.switch_to.window(driver.window_handles[1]) #switch new tab
-
       # 一度戻りtableをreset
       driver.navigate.back
       wait.until{ !driver.find_element(id: 'flexTable').displayed? }
@@ -88,8 +84,6 @@ class SourceTable
         end
       end
 
-      # driver.save_screenshot("screenshot.png")
-      # driver.close
       driver.quit
 
     end
@@ -97,8 +91,12 @@ class SourceTable
 
 end
 
+      # driver.save_screenshot("screenshot.png")
+      # driver.close
 
-
+      # # 別タブで展開
+      # driver.execute_script("window.open()") #make new tab
+      # driver.switch_to.window(driver.window_handles[1]) #switch new tab
 
       # wait.until { driver.navigate.refresh }
       # wait.until{ !driver.find_element(id: 'flexTable').displayed? }
