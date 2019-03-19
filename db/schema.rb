@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_010036) do
+ActiveRecord::Schema.define(version: 2019_03_19_041139) do
 
   create_table "items", force: :cascade do |t|
     t.integer "list_id"
@@ -36,6 +36,31 @@ ActiveRecord::Schema.define(version: 2019_02_19_010036) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sources", force: :cascade do |t|
+    t.integer "col1"
+    t.integer "col2"
+    t.date "col3"
+    t.string "col4"
+    t.string "col5"
+    t.string "col6"
+    t.string "col7"
+    t.time "col8"
+    t.time "col9"
+    t.string "col10"
+    t.string "col11"
+    t.string "col12"
+    t.integer "col13"
+    t.integer "col14"
+    t.integer "col15"
+    t.integer "col16"
+    t.integer "col17"
+    t.integer "col18"
+    t.integer "col19"
+    t.integer "col20"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "upload_files", force: :cascade do |t|
     t.string "name"
     t.string "file"
@@ -47,6 +72,13 @@ ActiveRecord::Schema.define(version: 2019_02_19_010036) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
