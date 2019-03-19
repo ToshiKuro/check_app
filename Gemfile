@@ -72,6 +72,7 @@ group :development, :test do
 end
 
 gem 'carrierwave'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails'
