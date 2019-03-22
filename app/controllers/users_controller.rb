@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  # ログインしているユーザーにのみ権限を与える
+  before_action :authenticate_user!
+
   def index
   end
 
@@ -12,39 +15,51 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    redirect_to owners_index_path
+    if current_user.try(:admin?)
+      user = User.create(user_params)
+      redirect_to owners_index_path
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def edit
-    @user = User.find(params[:id])
+    if current_user.try(:admin?)
+      @user = User.find(params[:id])
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(user_params)
-      redirect_to owners_index_path
-    else
-      render 'edit'
+    if current_user.try(:admin?)
+      user = User.find(params[:id])
+      if user.update(user_params)
+        redirect_to owners_index_path
+      else
+        render 'edit'
+      end
     end
   end
 
   def destroy
-    user = User.find(params[:id])
-    user.destroy
-    redirect_to owners_index_path
+    if current_user.try(:admin?)
+      user = User.find(params[:id])
+      user.destroy
+      redirect_to owners_index_path
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def user_item
-    # render plain: params.inspect
     @image = Item.find(params[:item][:id]).path
     @user = User.find_by(name: params[:item][:user_name])
     @items = Item.where(list_id: @user.lists).order(:name).group(:path)
     render 'show'
-    # respond_to do |format|                                                  #respond_toメソッドで結果をどのフォーマットで返すかを指定
-    #   format.html { render :show }
-    #   format.js { render :show }
-    # end
   end
 
   def acknowledgment
@@ -59,7 +74,6 @@ class UsersController < ApplicationController
   end
 
   def get_image
-    # binding.pry
     image = Item.find_by(name: params[:image_name])
     if image.file.blank?
       image = image.path

@@ -1,5 +1,8 @@
 class OwnersController < ApplicationController
 
+  # ログインしているユーザーにのみ権限を与える
+  before_action :authenticate_user!
+
   def index
     @users = User.all.order(:name)
     @lists = List.all.order(:name)
@@ -27,14 +30,19 @@ class OwnersController < ApplicationController
   end
 
   def create
-    lists = params[:list].select {|k,v| v == "1" }      #check boxでcheckしたものを抽出
-    lists.each do |list|
-      owner = Owner.new
-      owner.user_id = User.find_by(name: params[:owner][:user]).id
-      owner.list_id = List.find_by(name: list[0]).id
-      owner.save
+    if current_user.try(:admin?)
+      lists = params[:list].select {|k,v| v == "1" }      #check boxでcheckしたものを抽出
+      lists.each do |list|
+        owner = Owner.new
+        owner.user_id = User.find_by(name: params[:owner][:user]).id
+        owner.list_id = List.find_by(name: list[0]).id
+        owner.save
+      end
+      redirect_to owners_show_path
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
     end
-    redirect_to owners_show_path
   end
 
   def acknowledgment
@@ -44,13 +52,18 @@ class OwnersController < ApplicationController
   end
 
   def update
-    @owners = Owner.all
-    @ack_user = params[:ack_user]
-    owner = Owner.find(params[:id])
-    if item.update(item_params)
-      redirect_to owners_index_path
+    if current_user.try(:admin?)
+      @owners = Owner.all
+      @ack_user = params[:ack_user]
+      owner = Owner.find(params[:id])
+      if item.update(item_params)
+        redirect_to owners_index_path
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
     end
   end
 

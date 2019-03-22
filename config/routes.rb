@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: 'owners#login'
+  
+  # ログイン画面をホームにする
+  devise_scope :user do
+    root :to => "devise/sessions#new"
+  end
 
   get    'users/index'
   get    'users/new'

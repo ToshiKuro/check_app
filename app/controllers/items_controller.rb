@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
 
+  # ログインしているユーザーにのみ権限を与える
+  before_action :authenticate_user!
+
   def index
   end
 
@@ -12,17 +15,25 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item = Item.create(item_params)
-    redirect_to owners_index_path
+    if current_user.try(:admin?)
+      item = Item.create(item_params)
+      redirect_to owners_index_path
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def edit
-    @item = Item.find(params[:id])
+    if current_user.try(:admin?)
+      @item = Item.find(params[:id])
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def update
-    # binding.pry
-    # render plain: params.inspect
     item = Item.find(params[:id])
     if params[:file].blank?
       item.remove_file!
@@ -36,9 +47,14 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to owners_index_path
+    if current_user.try(:admin?)
+      item = Item.find(params[:id])
+      item.destroy
+      redirect_to owners_index_path
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   private

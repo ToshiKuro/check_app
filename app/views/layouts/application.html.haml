@@ -9,6 +9,9 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     
   %body
+    // devise用ログアウト機能
+    - if user_signed_in?
+      %p= link_to "ログアウト", destroy_user_session_path, method: :delete
     // devise用flash message
     %p.notice= notice
     %p.alert= alert

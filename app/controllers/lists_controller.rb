@@ -1,5 +1,8 @@
 class ListsController < ApplicationController
 
+  # ログインしているユーザーにのみ権限を与える
+  before_action :authenticate_user!
+
   def index
   end
 
@@ -8,17 +11,25 @@ class ListsController < ApplicationController
 
   def show
     @list  = List.find(params[:format])
-    # @items = Item.where(list_id: params[:format])
   end
 
   def create
-    list = List.create(list_params)
-    redirect_to owners_index_path
-    # redirect_to action: 'show', name: list.name
+    if current_user.try(:admin?)
+      list = List.create(list_params)
+      redirect_to owners_index_path
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def edit
-    @list = List.find(params[:id])
+    if current_user.try(:admin?)
+      @list = List.find(params[:id])
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def update
@@ -31,9 +42,14 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    list = List.find(params[:id])
-    list.destroy
-    redirect_to action: 'show', name: list.name
+    if current_user.try(:admin?)
+      list = List.find(params[:id])
+      list.destroy
+      redirect_to action: 'show', name: list.name
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   private

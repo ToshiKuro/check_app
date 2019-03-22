@@ -8,12 +8,12 @@
 
 
 # User登録
-User.create(name: '鈴木一郎')
-User.create(name: '田中二郎')
-User.create(name: '佐藤三郎')
-User.create(name: '高橋四郎')
-User.create(name: '伊藤五郎')
-User.create(name: '山本六郎')
+User.create(name: '鈴木一郎', belongs: 'foc', email: '')
+User.create(name: '田中二郎', belongs: 'pic', email: '')
+User.create(name: '佐藤三郎', belongs: 'pic', email: '')
+User.create(name: '高橋四郎', belongs: 'ca', email: '')
+User.create(name: '伊藤五郎', belongs: 'ca', email: '')
+User.create(name: '山本六郎', belongs: 'foc', email: '')
 
 
 # List登録

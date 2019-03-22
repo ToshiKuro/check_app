@@ -1,5 +1,8 @@
 class SourceController < ApplicationController
 
+  # ログインしているユーザーにのみ権限を与える
+  before_action :authenticate_user!
+
   def index
     @select_date = params[:date].nil? ? Time.now.strftime('%Y-%m-%d') : params[:date]
     SourceTable.get_table(@select_date)
