@@ -1,0 +1,22 @@
+default: &default
+
+# development:
+#   <<: *default
+
+# test:
+#   <<: *default
+
+# production:
+#   <<: *default
+
+development:
+  id: <%= ENV["WEB_CHECKLIST_ID"] %>
+  pass: <%= ENV["WEB_CHECKLIST_PWD"] %>
+
+test:
+  id: <%= ENV["WEB_CHECKLIST_ID"] %>
+  pass: <%= ENV["WEB_CHECKLIST_PWD"] %>
+
+production:
+  id: <%= ENV["WEB_CHECKLIST_ID"] %>
+  pass: <%= ENV["WEB_CHECKLIST_PWD"] %>
