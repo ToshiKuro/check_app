@@ -14,13 +14,18 @@
         %table#ack_chk_boxes
           - @items.each do |item|
             %tr
-              %td.button01= item.name
-              %td= check_box :item, item.name, class: 'ack_chk_box'
+              %td.button01{id: "button#{item.id}"}= item.name
+              %td= check_box :item, item.name, id: "check_box#{item.id}", class: 'ack_chk_box', disabled: 'disabled'
+
+        / %a{href: "https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png", width: '100%', height: 'auto'} 印刷
+        / %input{:onclick => "window.print();", :type => "button", :value => "印刷"}
+        %button#print_button{type: 'button'}
+          Print
 
         = f.hidden_field :ack_user, value: @user.name
         = f.submit 'Acknowledgment', id: 'acknowledgment', disabled: 'disabled'
         %h5#sended= ''
-    %td#image
+    %td#image{valign: 'top'}
 
 
 
@@ -36,3 +41,5 @@
       /         %td= check_box :item, item.name, class: 'ack_chk_box'
       /   = f.hidden_field :ack_user, value: @user.id
       /   = f.submit 'Acknowledgment', id: 'acknowledgment', disabled: 'disabled'
+
+      / {width: '100%',  height: 'auto'}

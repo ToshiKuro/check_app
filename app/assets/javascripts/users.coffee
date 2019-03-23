@@ -13,6 +13,9 @@ ready = ->
 
   $('.button01').click ->
     image_name = $(this).text()
+    button_id = $(this).attr('id')
+    check_box_id = button_id.replace('button', 'check_box')
+    $('#' + check_box_id).prop 'disabled', false
     $.ajax(
       url:'get_image',
       type:'get',
@@ -20,11 +23,22 @@ ready = ->
           'image_name':image_name
     )
     .done (res) ->
-      $('#image').html('<object data="' + res['image'] + '"></object>')
+      $('#image').html('<object id="print_image" data="' + res['image'] + '"></object>')
     .fail (err) ->
       console.log err
       $('#image').text('画像を取得できませんでした')
       return
+    return
+
+  $('#print_button').click ->
+    doc = document.getElementById('print_image').getAttribute('data')
+    window.open(doc, 'width=100%').print()
+    # window.open(doc)
+    # window.print()
+    # window.open('','_self').close()
+
+    # $('#image').printThis()
+    # $('#image').printPreview()
     return
 
 
