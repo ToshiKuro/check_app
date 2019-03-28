@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  # devise_for :users
+  devise_for :users, :controllers => {
+   :registrations => 'users/registrations'
+  }
   
   # ログイン画面をホームにする
   devise_scope :user do
