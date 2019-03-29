@@ -1,0 +1,10 @@
+%h2 チェック・リスト 新規登録
+
+= form_for List.new do |f|
+  %p= f.label :リスト名
+  = f.text_field :name
+  %p= f.label :項目
+  = f.text_field :item
+  %p= f.label :リンク先
+  = f.text_field :address
+  %p= f.submit :登録

@@ -1,0 +1,14 @@
+#login_top Self Briefing System
+#login_main
+  #login_main_top Login
+  #login_main_center
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      #login_name.field
+        / "email"は？？ # userでログインできるように':email'から':name'へ変更
+        = f.label :name, {class: 'pic_login'}
+        = f.text_field :name, autofocus: true, autocomplete: "name"
+      #login_pwd.field
+        = f.label :password, {class: 'pic_login'}
+        = f.password_field :password, autocomplete: "current-password"
+      #login_submit.actions
+        = f.submit 'Login', {class: 'pic_login_submit'}

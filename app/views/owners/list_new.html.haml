@@ -1,0 +1,37 @@
+/ %h2 新規登録画面
+
+/ %h4 新規ユーザー
+/ = form_for User.new do |f|
+/   = f.label :name, 'ユーザー名'
+/   = f.text_field :name
+/   %br
+/   = f.label :belongs, '所属先'
+/   = f.text_field :belongs
+/   %br
+/   = f.submit :submit
+
+%h4 新規便
+= form_for List.new do |f|
+  = f.label :name, '便名'
+  = f.text_field :name
+  %br
+  = f.submit :submit
+
+%br
+%br
+
+%h4 新規リスト項目
+= form_for Item.new do |f|
+  = f.label :name, '新規項目名'
+  = f.text_field :name
+  %br
+  = f.label :list_id, '対象便名'
+  = f.collection_select :list_id, List.group(:name).order(:name), :id, :name, include_blank: :true
+  %br
+  = f.label :file, 'ファイル名'
+  = f.file_field :file
+  %br
+  = f.label :url, '接続先（URL）'
+  = f.text_field :url
+  %br
+  = f.submit :submit

@@ -1,0 +1,16 @@
+%body{bgcolor: '#C0C0C0'}
+
+
+= form_for :user, url: users_show_path, method: :get do |f|
+  %p
+    = f.label :name, 'PIC： '
+    = f.collection_select :name, User.group(:name).order(:name), :name, :name, include_blank: :true
+    = f.submit 'Select'
+
+%table{border: 1, height: 800, width: 1200}
+  %tr{height: 20}
+    %th{width: '10%'}
+    %th{width: '90%'}
+  %tr{height: 780}
+    %td
+    %td

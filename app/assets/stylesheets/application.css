@@ -13,3 +13,178 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+body {
+  /*background-color: #E8F1F8;*/
+  /*background:#FFF url(../img/bg.gif) no-repeat left top;*/
+  font-family: Verdana, 'ＭＳ Ｐゴシック', sans-serif;
+  font-size: 14px;
+  height: 100%;
+}
+
+
+/*共通レイアウト*/
+.header{
+  height: 30px;
+  /*border-bottom: 1px solid #8DB2E3;*/
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+}
+/*
+.header >:last-child {
+  margin-left: auto;
+}*/
+
+ /* 要素を超えた分の背景が伸びないブラウザ用 */
+/*.main > .left {
+  height: auto;
+}*/
+
+.main{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.left{
+  width: 250px;
+  height: 100%;
+  margin-right: 1px;
+  border-top: 1px solid #777777;
+  border-right: 1px solid #777777;
+}
+
+.left_top{
+  width: 250px;
+  height: 20px;
+  background-color: #8DB2E3;
+  border-bottom: 1px solid #777777;
+}
+
+.left_main{
+  padding: 2px 20px;
+}
+
+.center{
+  height: 100%;
+  width: 100%;
+  border-top: 1px solid #777777;
+  border-left: 1px solid #777777;
+}
+
+.center_top{
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  background-color: #CEDFF5;
+  border-bottom: 3px double #8DB2E3;
+}
+
+.center_main{
+  height: 100%;
+  width: 100%;
+}
+
+
+.inlineCenter {
+  text-align: center;
+}
+
+
+
+/*ログイン画面レイアウト*/
+#login_top{
+  font-size: 30px;
+  width: auto;
+  margin: 30px 30px 20px; 
+  text-align: center;
+}
+
+#login_main{
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+#login_main_top{
+  width: 500px;
+  text-align: center;
+  background-color: skyblue;
+  border: 1px deepskyblue solid;
+  font-size: 25px;
+}
+
+#login_main_center{
+  width: 490px;
+  height: 150px;
+  padding: 5px;
+  background-color: azure;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px deepskyblue solid;
+}
+
+/*label[for="user_name"], [for="user_password"] {*/
+.pic_login{
+  margin: 10px 0;
+  float: left;
+  width: 120px;
+}
+
+input[type="text"], [type="password"] {
+  margin: 10px 0;
+  width: 200px;
+  height: 20px;
+}
+
+#login_submit{
+  display: block;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.pic_login_submit{
+  font-size: 20px;
+  text-align: center;
+  width: 100px;
+}
+
+/*input[type="submit"]#login_submit{
+  font-size: 20px;
+}*/
+
+#normal_alert{
+  font-size: 30px;
+  color: red;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+.button{
+  height: 20px;
+  width: 150px;
+}
+
+
+
+
