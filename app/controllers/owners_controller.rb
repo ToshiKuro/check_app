@@ -4,6 +4,7 @@ class OwnersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @title = '＜登録情報＞'
     @users = User.all.order(:name)
     @lists = List.all.order(:name)
     @items = Item.all.order(:list_id)
@@ -14,12 +15,15 @@ class OwnersController < ApplicationController
   end
 
   def list_new
+    @title = '＜新規登録＞'
   end
 
   def new
+    @title = '＜PIC搭乗便登録＞'
   end
 
   def show
+    @title = '＜運航管理者監視画面＞'
     @owners = Owner.all
     @items_max_number = 0
     @owners.each do |owner|

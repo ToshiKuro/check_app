@@ -1,16 +1,21 @@
-%h2= @list.name + ' Items'
-%p= button_to 'Monitoring View', owners_show_path, method: :get
+/ %h2= @list.name + ' チェク・リスト項目'
+
+= form_with url: lists_show_path, method: :get, local: true do |f|
+  = f.label :id, '便選択'
+  = f.collection_select :id, List.group(:name).order(:name), :id, :name, include_blank: :true
+  = f.submit :submit
 
 %table{border: 1}
   %tr
-    %th Item name
-    %th Path(URL or File)
+    %th 便名
+    %th ファイル名 (URLも設定されている場合、こちらが優先される)
+    %th 接続先URL
+    %th 
+    %th 
   - @list.items.each do |item|
     %tr
       %td= item.name
-      - if item.file.blank?
-        %td= link_to item.path, item.path, target: '_blank'
-      - else
-        %td= link_to item.file, item.file.url, target: '_blank'
-      %td= link_to '[Edit]', item_edit_path(item)
-      %td= link_to '[Delete]', item_delete_path(item), method: :delete, data: {confirm: '削除しますか？'}
+      %td= link_to item.file, item.file.url, target: '_blank'
+      %td= link_to item.url, item.url, target: '_blank'
+      %td= link_to '編集', item_edit_path(item)
+      %td= link_to '削除', item_delete_path(item), method: :delete, data: {confirm: '削除しますか？'}

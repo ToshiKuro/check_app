@@ -5,6 +5,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def after_sign_up_path_for(resource)
+    owners_index_path
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    owners_index_path
+  end
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -39,7 +47,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  # def current_user_is_admin?
+  #   user_signed_in? && current_user.has_role?(:admin)
+  # end
+
+  def sign_up(resource_name, resource)
+    sign_in(current_user)
+    # render layout: 'normal'
+    # if !current_user_is_admin?
+    #   sign_in(resource_name, resource)
+    # end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

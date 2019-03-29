@@ -4,14 +4,18 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    render layout: 'normal'
   end
 
   def new
   end
 
   def show
+    # render plain: params.inspect
+    # binding.pry
     @user = User.find_by(name: params[:user][:name])
     @items = Item.where(list_id: @user.lists).order(:name).group(:path)
+    render layout: 'normal'
   end
 
   def create
@@ -46,6 +50,8 @@ class UsersController < ApplicationController
 
   def destroy
     if current_user.try(:admin?)
+      owner = Owner.where(user_id: params[:id])
+      owner.destroy_all
       user = User.find(params[:id])
       user.destroy
       redirect_to owners_index_path

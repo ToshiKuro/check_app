@@ -24,7 +24,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit
+  def edit    
+    @title = '＜チェック・リスト編集画面＞'
+    # binding.pry
     if current_user.try(:admin?)
       @item = Item.find(params[:id])
     else
@@ -34,13 +36,17 @@ class ItemsController < ApplicationController
   end
 
   def update
+    # binding.pry
     item = Item.find(params[:id])
-    if params[:file].blank?
+    # binding.pry
+    # unless item.file == params[:file]
+    if params[:item][:file].blank?
       item.remove_file!
       item.save
     end
     if item.update(item_params)
-      redirect_to owners_index_path
+      # binding.pry
+      redirect_to lists_show_path(id: item.list_id)
     else
       render 'edit'
     end
@@ -50,7 +56,7 @@ class ItemsController < ApplicationController
     if current_user.try(:admin?)
       item = Item.find(params[:id])
       item.destroy
-      redirect_to owners_index_path
+      redirect_to lists_show_path(id: item.list_id)
     else
       redirect_back(fallback_location: root_path)
       flash[:notice] = 'アクセス権限がありません'
@@ -60,7 +66,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:id, :name, :list_id, :path, :file)
+    params.require(:item).permit(:id, :name, :list_id, :url, :file)
   end
 
 end

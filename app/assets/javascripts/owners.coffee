@@ -6,10 +6,13 @@ ready = ->
 
   $ ->
     if location.href == 'http://localhost:3000/owners/show'
-      setTimeout (->
+      id = setTimeout (->
         location.reload()
         return
       ), 10000
+      $('input#source_button').click ->
+        clearTimeout id
+        return
   return
 
 $(document).ready(ready)

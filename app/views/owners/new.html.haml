@@ -1,10 +1,11 @@
-%h2 New User's List
-= button_to 'Return', :back, method: :get
+/ %h2 PIC搭乗便
 
 = form_for Owner.new do |f|
-  = f.label :user
+  %h4= f.label :user, 'PIC'
   = f.text_field :user
-  %p
+  %h4= f.label :date, '搭乗日'
+  = f.date_field :date, value: Time.now.strftime('%Y-%m-%d')
+  %h4 搭乗便選択
   - List.group(:name).each do |list|
     = check_box :list, list.name
     = label_tag list.name, list.name

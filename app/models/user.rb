@@ -22,4 +22,9 @@ class User < ApplicationRecord
   has_many :owners
   has_many :lists, through: :owners
 
+  
+  # def sign_up
+  #   @title = '＜新規ユーザー登録＞'
+  # end
+
 end

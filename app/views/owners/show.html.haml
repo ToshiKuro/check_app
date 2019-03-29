@@ -1,21 +1,18 @@
-%h2 Owner Monitoring View
-= button_to 'All list', owners_index_path, method: :get
-= button_to 'New Create', owners_new_path, method: :get
-= button_to 'Logout', owners_login_path, method: :get
+/ %h2 運航管理者監視画面
 
-%table{border: 1, align: 'left'}
+%table{border: 1}
   %tr
-    %th User name
-    %th Acknowledgment
-    %th List name
-    %th{ colspan: @items_max_number} Items
+    %th PIC
+    %th 承認
+    %th 便名
+    %th{ colspan: @items_max_number} チェック・リスト項目
   - @owners.each do |owner|
     %tr
       %td= User.find(owner.user_id).name
       %td= owner.acknowledgment
-      %td= link_to List.find(owner.list_id).name, lists_show_path(owner.list_id)
+      %td= link_to List.find(owner.list_id).name, lists_show_path(id: owner.list_id)
       - List.find(owner.list_id).items.each do |item|
         - if item.file.blank?
-          %td= link_to item.name, item.path, target: '_blank'
+          %td= link_to item.name, item.url, target: '_blank'
         - else
           %td= link_to item.name, item.file.url, target: '_blank'

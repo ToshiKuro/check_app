@@ -1,45 +1,30 @@
 %body{bgcolor: '#C0C0C0'}
 
-%h2= 'PIC： ' + @user.name
+%div.print_off
 
-= button_to 'Logout', owners_login_path, method: :get
+  %h2= 'PIC： ' + @user.name
 
-%table{border: 1, height: 800, width: 1200}
-  %tr{height: 20}
-    %th{width: '10%'}
-    %th{width: '90%'}
-  %tr{height: 780}
-    %td{valign: 'top'}
-      = form_with url: users_acknowledgment_path do |f|          # , method: :get, local: true -> html
-        %table#ack_chk_boxes
-          - @items.each do |item|
-            %tr
-              %td.button01{id: "button#{item.id}"}= item.name
-              %td= check_box :item, item.name, id: "check_box#{item.id}", class: 'ack_chk_box', disabled: 'disabled'
+  %table{border: 1, height: 800, width: 1200}
+    %tr{height: 20}
+      %th{width: '10%'}
+      %th{width: '90%'}
+    %tr{height: 780}
+      %td{valign: 'top'}
+        = form_with url: users_acknowledgment_path do |f|          # , method: :get, local: true -> html
+          %table#ack_chk_boxes
+            - @items.each do |item|
+              %tr
+                %td.button01{id: "button#{item.id}"}= item.name
+                %td= check_box :item, item.name, id: "check_box#{item.id}", class: 'ack_chk_box', disabled: 'disabled'
 
-        / %a{href: "https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png", width: '100%', height: 'auto'} 印刷
-        / %input{:onclick => "window.print();", :type => "button", :value => "印刷"}
-        %button#print_button{type: 'button'}
-          Print
+          / %a{href: "https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png", width: '100%', height: 'auto'} 印刷
+          / %input{:onclick => "window.print();", :type => "button", :value => "印刷"}
+          %button#print_button{type: 'button'}
+            Print
 
-        = f.hidden_field :ack_user, value: @user.name
-        = f.submit 'Acknowledgment', id: 'acknowledgment', disabled: 'disabled'
-        %h5#sended= ''
-    %td#image{valign: 'top'}
+          = f.hidden_field :ack_user, value: @user.name
+          = f.submit 'Acknowledgment', id: 'acknowledgment', disabled: 'disabled'
+          %h5#sended= ''
+      %td#image{valign: 'top'}
 
-
-
-
-
-      / %td= link_to item.name, user_item_path(item:{id: item.id, user_name: @user.name}), class: 'button01' #, remote: true
-
-      / = form_with url: owners_acknowledgment_path, method: :get, local: true do |f|
-      /   %table#ack_chk_boxes
-      /     - @items.each do |item|
-      /       %tr
-      /         %td= link_to item.name, user_item_path(item:{id: item.id, user_name: @user.name}), class: 'button01'
-      /         %td= check_box :item, item.name, class: 'ack_chk_box'
-      /   = f.hidden_field :ack_user, value: @user.id
-      /   = f.submit 'Acknowledgment', id: 'acknowledgment', disabled: 'disabled'
-
-      / {width: '100%',  height: 'auto'}
+%div#print_on aaa
