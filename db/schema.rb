@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_041139) do
   create_table "items", force: :cascade do |t|
     t.integer "list_id"
     t.string "name"
-    t.string "path"
+    t.string "url"
     t.string "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_041139) do
     t.integer "user_id"
     t.integer "list_id"
     t.datetime "acknowledgment"
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

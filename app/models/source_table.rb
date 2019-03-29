@@ -60,7 +60,8 @@ class SourceTable
       driver.find_element(:xpath, '//*[@id="queryDate"]').send_keys(select_date)
 
       # 国内線data取得
-      driver.find_element(:xpath, '//*[@id="domInt"]/option[2]').click
+      n = 2
+      driver.find_element(:xpath, "//*[@id=\"domInt\"]/option[#{n}]").click
       driver.find_element(:xpath, '//*[@id="search"]').click
       wait.until { driver.find_element(id: 'flexTable').displayed? }
 
