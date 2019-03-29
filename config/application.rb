@@ -17,3 +17,15 @@ module CheckApp
     # the framework and any gems in your application.
   end
 end
+
+def load_config(key, filepath)
+  yml = YAML.load_file(filepath).symbolize_keys
+  raise "No such file #{filepath}" if yml.blank?
+
+  config = yml[Rails.env.to_sym]
+  raise "No such environment #{Rails.env} on #{filepath}" if config.blank?
+
+  Rails.application.config.send("#{key}=", ActiveSupport::InheritableOptions.new(config.deep_symbolize_keys))
+end
+
+load_config(:source, Rails.root.join('config', 'source.yml'))  #ource.ymlを読み込み

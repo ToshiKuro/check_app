@@ -1,0 +1,22 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+object {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  vertical-align: top;
+}
+
+.button01{
+  font-size: 8px;
+  display: inline-block;
+  border-radius: 2px;
+  background-color: white;
+  padding: 1px;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  width: 80px;
+}

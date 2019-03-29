@@ -1,0 +1,10 @@
+%h2 ユーザー 新規登録
+
+= form_for User.new do |f|
+  %p= f.label :名前
+  = f.text_field :name
+  %p
+  - List.group(:name).each do |list|
+    = check_box :list, list.name
+    = label_tag list.name, list.name
+  %p= f.submit :登録

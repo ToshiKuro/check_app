@@ -1,0 +1,27 @@
+%h2 ユーザー確認リスト編集画面
+
+= form_for @user, url: user_update_path(@user) do |f|
+  = f.label :list1
+  =f.collection_select :list1, List.group(:name).order(:name), :name, :name, include_blank: :true
+  %p
+  = f.label :list2
+  =f.collection_select :list2, List.group(:name).order(:name), :name, :name, include_blank: :true
+  %p
+  = f.label :list3
+  =f.collection_select :list3, List.group(:name).order(:name), :name, :name, include_blank: :true
+  %p
+  = f.label :list4
+  =f.collection_select :list4, List.group(:name).order(:name), :name, :name, include_blank: :true
+  %p
+  = f.label :list5
+  =f.collection_select :list5, List.group(:name).order(:name), :name, :name, include_blank: :true
+  %p
+  = f.label :list6
+  =f.collection_select :list6, List.group(:name).order(:name), :name, :name, include_blank: :true
+  %p
+  = f.label :list7
+  =f.collection_select :list7, List.group(:name).order(:name), :name, :name, include_blank: :true
+  %p
+  = f.label :list8
+  =f.collection_select :list8, List.group(:name).order(:name), :name, :name, include_blank: :true
+  %p= f.submit :登録

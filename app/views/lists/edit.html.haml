@@ -1,0 +1,10 @@
+%h2 チェック・リスト 編集画面
+
+= form_for @list, url: list_update_path(@list) do |f|
+  %p= f.label :リスト名
+  = f.text_field :name
+  %p= f.label :項目
+  = f.text_field :item
+  %p= f.label :リンク先
+  = f.text_field :address
+  %p= f.submit :更新

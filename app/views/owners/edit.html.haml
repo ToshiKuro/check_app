@@ -1,0 +1,24 @@
+%h2 All Edit View
+
+= form_for @user, url: user_update_path(@user)  do |f|
+  %h3= f.label :name, 'User Name Edit'
+  = f.text_field :name
+  = f.submit :submit
+
+= form_for @list, url: list_update_path(@list)  |f|
+  %h3= f.label :name, 'List Name Edit'
+  = f.text_field :name
+  = f.submit :submit
+
+%h3 New Item
+= form_for @item, url: item_update_path(@item)  do |f|
+  = f.label :name, 'Item Edit'
+  = f.text_field :name
+  %br
+  = f.label :list_id
+  = f.text_field :list_id
+  %br
+  = f.label :path
+  = f.text_field :path
+  %br
+  = f.submit :submit
