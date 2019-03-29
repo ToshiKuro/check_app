@@ -1,0 +1,34 @@
+= form_with url: source_index_path, method: :get, local: true do |f|
+  = f.date_field :date, value: @select_date
+  = f.submit :submit
+
+%table{border: 1}
+  %tr
+    %th PIC
+    %th FLT No.
+    %th Ship No.
+    %th Route
+    %th STD
+    %th STA
+    %th FLT Time
+    %th C/C
+    %th C/A
+    %th AD
+    %th CH
+    %th TTL PAX
+    %th Payload
+  - @source.each do |source|
+    %tr
+      %td= source.col4
+      %td= source.col6
+      %td= source.col11
+      %td= source.col7
+      %td= source.col8.strftime('%R')
+      %td= source.col9.strftime('%R')
+      %td= source.col10
+      %td= source.col13
+      %td= source.col15
+      %td= source.col16
+      %td= source.col17
+      %td= source.col18
+      %td= source.col20

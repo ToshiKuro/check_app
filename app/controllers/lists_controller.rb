@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
-  require 'pry'
-    # render plain: @list.inspect
+  # ログインしているユーザーにのみ権限を与える
+  before_action :authenticate_user!
 
   def index
   end
@@ -10,22 +10,33 @@ class ListsController < ApplicationController
   end
 
   def show
-    @lists = List.where(name: params[:name])
-    @title = List.find_by(name: params[:name])
+    @list = params[:id].nil? ? List.first : List.find(params[:id])
+    @title = "<#{@list.name} チェク・リスト>"
   end
 
   def create
-    list = List.create(list_params)
-    redirect_to action: 'show', name: list.name
+    if current_user.try(:admin?)
+      list = List.create(list_params)
+      redirect_to owners_index_path
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def edit
-    @list = List.find(params[:id])
+    if current_user.try(:admin?)
+      @list = List.find(params[:id])
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def update
     list = List.find(params[:id])
     if list.update(list_params)
+      redirect_to lists_show_path
       redirect_to action: 'show', name: list.name
     else
       render 'edit'
@@ -33,9 +44,18 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    list = List.find(params[:id])
-    list.destroy
-    redirect_to action: 'show', name: list.name
+    if current_user.try(:admin?)
+      owner = Owner.where(list_id: params[:id])
+      owner.destroy_all
+      item  = Item.where(list_id: params[:id])
+      item.destroy_all
+      list  = List.find(params[:id])
+      list.destroy
+      redirect_to owners_index_path
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   private

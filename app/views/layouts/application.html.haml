@@ -7,5 +7,27 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    = yield
+    
+  %body{bgcolor: '#E8F1F8'}
+    .header
+      // devise用ログアウト機能
+      - if user_signed_in?
+        %p.print_off#logout= link_to 'Logout', destroy_user_session_path, method: :delete
+      // devise用flash message
+      / %p.notice= notice
+      %p.alert= alert
+    .main
+      .left
+        .left_top
+        .left_main
+          = button_to '運航管理者監視画面', owners_show_path, method: :get, class: 'button'
+          = button_to '運航情報', source_index_path, method: :get, class: 'button', id: 'source_button'
+          = button_to '登録情報', owners_index_path, method: :get, class: 'button'
+          = button_to 'チェク・リスト情報', lists_show_path, method: :get, class: 'button'
+          = button_to 'PIC搭乗便登録', owners_new_path, method: :get, class: 'button'
+          = button_to '新規ユーザー登録', new_user_registration_path, method: :get, class: 'button'
+          = button_to '新規便/リスト項目登録', owners_list_new_path, method: :get, class: 'button'
+      .center
+        .center_top= @title
+        .center_main
+          = yield

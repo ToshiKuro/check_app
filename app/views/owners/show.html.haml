@@ -1,2 +1,18 @@
-%h1 Owners#show
-%p Find me in app/views/owners/show.html.haml
+/ %h2 運航管理者監視画面
+
+%table{border: 1}
+  %tr
+    %th PIC
+    %th 承認
+    %th 便名
+    %th{ colspan: @items_max_number} チェック・リスト項目
+  - @owners.each do |owner|
+    %tr
+      %td= User.find(owner.user_id).name
+      %td= owner.acknowledgment
+      %td= link_to List.find(owner.list_id).name, lists_show_path(id: owner.list_id)
+      - List.find(owner.list_id).items.each do |item|
+        - if item.file.blank?
+          %td= link_to item.name, item.url, target: '_blank'
+        - else
+          %td= link_to item.name, item.file.url, target: '_blank'

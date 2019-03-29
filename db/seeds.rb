@@ -6,86 +6,209 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# list         = List.new
-# list.name    = 'IJ201'
-# list.item    = 'BRFGシート'
-# list.address = ''
-# list.save
 
-list         = List.new
-list.name    = 'IJ201'
-list.item    = '飛行実施計画'
-list.address = '/uploads/upload_file/file/4/pln201.pdf'
-list.save
+# User登録
+# User.create(name: ,belongs: )
 
-# list         = List.new
-# list.name    = 'IJ201'
-# list.item    = '飛行計画'
-# list.address = ''
-# list.save
 
-list         = List.new
-list.name    = 'IJ201'
-list.item    = 'NOTAM'
-list.address = '/uploads/upload_file/file/2/NOTAM201.pdf'
-list.save
+# List登録
+List.create(name: 'IJ213')
+List.create(name: 'IJ214')
+List.create(name: 'IJ253')
+List.create(name: 'IJ254')
+List.create(name: 'IJ301')
+List.create(name: 'IJ302')
+List.create(name: 'IJ357')
+List.create(name: 'IJ358')
+List.create(name: 'IJ621')
+List.create(name: 'IJ622')
+List.create(name: 'IJ623')
+List.create(name: 'IJ624')
+List.create(name: 'IJ701')
+List.create(name: 'IJ702')
+List.create(name: 'IJ703')
+List.create(name: 'IJ704')
+List.create(name: 'IJ831')
+List.create(name: 'IJ832')
+List.create(name: 'IJ833')
+List.create(name: 'IJ834')
 
-# list         = List.new
-# list.name    = 'IJ201'
-# list.item    = 'TAF/METER'
-# list.address = ''
-# list.save
 
-list         = List.new
-list.name    = 'IJ201'
-list.item    = 'FBJP'
-list.address = 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png'
-list.save
+#中間テーブル（owners table）
+# Owner.create(user_id: 1, list_id: 1, acknowledgment: '')
+# Owner.create(user_id: 1, list_id: 2, acknowledgment: '')
+# Owner.create(user_id: 1, list_id: 3, acknowledgment: '')
+# Owner.create(user_id: 2, list_id: 2, acknowledgment: '')
+# Owner.create(user_id: 2, list_id: 4, acknowledgment: '')
+# Owner.create(user_id: 3, list_id: 3, acknowledgment: '')
+# Owner.create(user_id: 3, list_id: 1, acknowledgment: '')
 
-list         = List.new
-list.name    = 'IJ201'
-list.item    = '中国重要天気'
-list.address = '/uploads/upload_file/file/1/QMCD98_RJTT.png'
-list.save
 
-# list         = List.new
-# list.name    = 'IJ202'
-# list.item    = 'BRFGシート'
-# list.address = ''
-# list.save
+# （List）Item登録
+Item.create(list_id: 1,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 1,name: 'Co. FLT PLN IJ213',url: '',file: '')
+Item.create(list_id: 1,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 1,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 1,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 1,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 1,name: 'CHN SIG CHART',url: '',file: '')
+Item.create(list_id: 1,name: 'OTR INFO',url: '',file: '')
 
-list         = List.new
-list.name    = 'IJ202'
-list.item    = '飛行実施計画'
-list.address = '/uploads/upload_file/file/5/pln202.pdf'
-list.save
+Item.create(list_id: 2,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 2,name: 'Co. FLT PLN IJ214',url: '',file: '')
+Item.create(list_id: 2,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 2,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 2,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 2,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 2,name: 'CHN SIG CHART',url: '',file: '')
+Item.create(list_id: 2,name: 'OTR INFO',url: '',file: '')
 
-# list         = List.new
-# list.name    = 'IJ202'
-# list.item    = '飛行計画'
-# list.address = ''
-# list.save
+Item.create(list_id: 3,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 3,name: 'Co. FLT PLN IJ253',url: '',file: '')
+Item.create(list_id: 3,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 3,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 3,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 3,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 3,name: 'CHN SIG CHART',url: '',file: '')
+Item.create(list_id: 3,name: 'OTR INFO',url: '',file: '')
 
-list         = List.new
-list.name    = 'IJ202'
-list.item    = 'NOTAM'
-list.address = '/uploads/upload_file/file/3/NOTAM202.pdf'
-list.save
+Item.create(list_id: 4,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 4,name: 'Co. FLT PLN IJ254',url: '',file: '')
+Item.create(list_id: 4,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 4,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 4,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 4,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 4,name: 'CHN SIG CHART',url: '',file: '')
+Item.create(list_id: 4,name: 'OTR INFO',url: '',file: '')
 
-# list         = List.new
-# list.name    = 'IJ202'
-# list.item    = 'TAF/METER'
-# list.address = ''
-# list.save
+Item.create(list_id: 5,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 5,name: 'Co. FLT PLN IJ301',url: '',file: '')
+Item.create(list_id: 5,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 5,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 5,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 5,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 5,name: 'CHN SIG CHART',url: '',file: '')
+Item.create(list_id: 5,name: 'OTR INFO',url: '',file: '')
 
-list         = List.new
-list.name    = 'IJ202'
-list.item    = 'FBJP'
-list.address = 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png'
-list.save
+Item.create(list_id: 6,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 6,name: 'Co. FLT PLN IJ302',url: '',file: '')
+Item.create(list_id: 6,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 6,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 6,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 6,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 6,name: 'CHN SIG CHART',url: '',file: '')
+Item.create(list_id: 6,name: 'OTR INFO',url: '',file: '')
 
-list         = List.new
-list.name    = 'IJ202'
-list.item    = '毎次大気解析'
-list.address = 'http://www.data.jma.go.jp/airinfo/data/pict/maiji/WANLF145_RJTD_20190216100000.PNG'
-list.save
+Item.create(list_id: 7,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 7,name: 'Co. FLT PLN IJ357',url: '',file: '')
+Item.create(list_id: 7,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 7,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 7,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 7,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 7,name: 'CHN SIG CHART',url: '',file: '')
+Item.create(list_id: 7,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 8,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 8,name: 'Co. FLT PLN IJ358',url: '',file: '')
+Item.create(list_id: 8,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 8,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 8,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 8,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 8,name: 'CHN SIG CHART',url: '',file: '')
+Item.create(list_id: 8,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 9,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 9,name: 'Co. FLT PLN IJ621',url: '',file: '')
+Item.create(list_id: 9,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 9,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 9,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 9,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 9,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 10,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 10,name: 'Co. FLT PLN IJ622',url: '',file: '')
+Item.create(list_id: 10,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 10,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 10,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 10,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 10,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 11,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 11,name: 'Co. FLT PLN IJ623',url: '',file: '')
+Item.create(list_id: 11,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 11,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 11,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 11,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 11,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 12,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 12,name: 'Co. FLT PLN IJ624',url: '',file: '')
+Item.create(list_id: 12,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 12,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 12,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 12,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 12,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 13,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 13,name: 'Co. FLT PLN IJ701',url: '',file: '')
+Item.create(list_id: 13,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 13,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 13,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 13,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 13,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 14,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 14,name: 'Co. FLT PLN IJ702',url: '',file: '')
+Item.create(list_id: 14,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 14,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 14,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 14,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 14,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 15,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 15,name: 'Co. FLT PLN IJ703',url: '',file: '')
+Item.create(list_id: 15,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 15,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 15,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 15,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 15,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 16,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 16,name: 'Co. FLT PLN IJ704',url: '',file: '')
+Item.create(list_id: 16,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 16,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 16,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 16,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 16,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 17,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 17,name: 'Co. FLT PLN IJ831',url: '',file: '')
+Item.create(list_id: 17,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 17,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 17,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 17,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 17,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 18,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 18,name: 'Co. FLT PLN IJ832',url: '',file: '')
+Item.create(list_id: 18,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 18,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 18,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 18,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 18,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 19,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 19,name: 'Co. FLT PLN IJ833',url: '',file: '')
+Item.create(list_id: 19,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 19,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 19,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 19,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 19,name: 'OTR INFO',url: '',file: '')
+
+Item.create(list_id: 20,name: 'BRFG SHEET',url: '',file: '')
+Item.create(list_id: 20,name: 'Co. FLT PLN IJ834',url: '',file: '')
+Item.create(list_id: 20,name: 'ATC FLT PLN',url: '',file: '')
+Item.create(list_id: 20,name: 'NOTAM',url: '',file: '')
+Item.create(list_id: 20,name: 'TAF/METAR',url: '',file: '')
+Item.create(list_id: 20,name: 'FBJP',url: 'https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png',file: '')
+Item.create(list_id: 20,name: 'OTR INFO',url: '',file: '')

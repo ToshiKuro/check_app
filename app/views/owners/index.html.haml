@@ -1,32 +1,62 @@
-%h2= 'PIC 確認リスト一覧'
-%p= button_to 'Logout', owners_login_path, method: :get
+/ %h2 登録情報
 
-%table{border: 1}
+%table{border: 1, align: 'left'}
   %tr
-    %th ID
-    %th ユーザー
-    %th list1
-    %th list2
-    %th list3
-    %th list4
-    %th list5
-    %th list6
-    %th list7
-    %th list8
-
+    %th ユーザー名
+    %th 所属
+    %th
   - @users.each do |user|
     %tr
-      %td= user.id
       %td= user.name
-      %td= user.list1
-      %td= user.list2
-      %td= user.list3
-      %td= user.list4
-      %td= user.list5
-      %td= user.list6
-      %td= user.list7
-      %td= user.list8
-      %td= link_to '[編集]', user_edit_path(user)
-      %td= link_to '[削除]', user_delete_path(user), method: :delete, data: {confirm: '削除しますか？'}
+      %td= user.belongs
+      %td= link_to '削除', user_delete_path(user), method: :delete, data: {confirm: '削除しますか？'}
 
-%p= button_to '新規登録', users_new_path, method: :get
+%nobr
+  %table{border: 0, align: 'left', width: '30'}
+    %tr
+
+%nobr
+  %table{border: 1, align: 'left'}
+    %tr
+      %th 便名
+      %th
+    - @lists.each do |list|
+      %tr
+        / %td= list.name
+        %td= link_to list.name, lists_show_path(id: list.id)
+        %td= link_to '削除', list_delete_path(list), method: :delete, data: {confirm: '削除しますか？'}
+
+%nobr
+  %table{border: 0, align: 'left', width: '30'}
+    %tr
+
+%nobr
+  %table{border: 1}
+    %tr
+      %th 便名
+      %th 項目名
+      %th URL
+      %th File
+      %th
+      %th
+    - @items.each do |item|
+      %tr
+        %td= item.list.name
+        %td= item.name
+        %td= link_to item.url, item.url, target: '_blank'
+        %td= link_to item.file, item.file.url, target: '_blank'
+        %td= link_to '編集', item_edit_path(item)
+        %td= link_to '削除', item_delete_path(item), method: :delete, data: {confirm: '削除しますか？'}
+
+
+
+
+        / - if item.file =! ''
+        /   %td= link_to item.file, item.file.url, target: '_blank'
+        / - else
+        /   %td= link_to item.path, item.path, target: '_blank'
+
+
+
+
+

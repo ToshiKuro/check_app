@@ -1,5 +1,8 @@
 class UploaderController < ApplicationController
 
+  # ログインしているユーザーにのみ権限を与える
+  before_action :authenticate_user!
+
   def index
   end
 
@@ -7,9 +10,14 @@ class UploaderController < ApplicationController
   end
 
   def upload
-    @upload_file = UploadFile.new( params.require(:upload_file).permit(:name, :file) )
-    @upload_file.save
-    redirect_to action: 'index'
+    if current_user.try(:admin?)
+      @upload_file = UploadFile.new( params.require(:upload_file).permit(:name, :file) )
+      @upload_file.save
+      redirect_to action: 'index'
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def download

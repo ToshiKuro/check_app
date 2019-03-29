@@ -1,62 +1,102 @@
 class UsersController < ApplicationController
 
-  require 'pry'
+  # ログインしているユーザーにのみ権限を与える
+  before_action :authenticate_user!
 
   def index
+    render layout: 'normal'
   end
 
   def new
   end
 
   def show
+    # render plain: params.inspect
+    # binding.pry
     @user = User.find_by(name: params[:user][:name])
-    list_names = @user.attributes.values
-    list_names.slice!(-2,2)
-    list_names.shift(2)
-    list_names = list_names.uniq.reject(&:blank?)
-    @items = List.item_select(list_names)
+    @items = Item.where(list_id: @user.lists).order(:name).group(:path)
+    render layout: 'normal'
   end
 
   def create
-    user = User.create(user_params)
-    redirect_to owners_index_path
+    if current_user.try(:admin?)
+      user = User.create(user_params)
+      redirect_to owners_index_path
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def edit
-    @user = User.find(params[:id])
+    if current_user.try(:admin?)
+      @user = User.find(params[:id])
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(user_params)
-      redirect_to owners_index_path
-    else
-      render 'edit'
+    if current_user.try(:admin?)
+      user = User.find(params[:id])
+      if user.update(user_params)
+        redirect_to owners_index_path
+      else
+        render 'edit'
+      end
     end
   end
 
   def destroy
-    user = User.find(params[:id])
-    user.destroy
-    redirect_to owners_index_path
+    if current_user.try(:admin?)
+      owner = Owner.where(user_id: params[:id])
+      owner.destroy_all
+      user = User.find(params[:id])
+      user.destroy
+      redirect_to owners_index_path
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
   end
 
   def user_item
-    @image = List.find(params[:item][:id].to_i).address
+    @image = Item.find(params[:item][:id]).path
     @user = User.find_by(name: params[:item][:user_name])
-    list_names = @user.attributes.values
-    list_names.slice!(-2,2)
-    list_names.shift(2)
-    list_names = list_names.uniq.reject(&:blank?)
-    @items = List.item_select(list_names)
+    @items = Item.where(list_id: @user.lists).order(:name).group(:path)
     render 'show'
-    # redirect_to action: 'show'
+  end
+
+  def acknowledgment
+    @user = User.find_by(name: params[:ack_user])
+    @items = Item.where(list_id: @user.lists).order(:name).group(:path)
+    owner = Owner.where(user_id: @user.id)
+    owner.update(acknowledgment: Time.current)
+    respond_to do |format|                                                  #respond_toメソッドで結果をどのフォーマットで返すかを指定
+      format.html { render :show }
+      format.js { render :show }
+    end
+  end
+
+  def get_image
+    image = Item.find_by(name: params[:image_name])
+    if image.file.blank?
+      image = image.path
+    else
+      image = image.file.url
+    end
+    render json: {image: image}
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :list1, :list2, :list3, :list4, :list5, :list6, :list7, :list8)
+    params.require(:user).permit(:name)
+  end
+
+  def list_params
+    params.require(:list).permit(:name)
   end
 
 end
