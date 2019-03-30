@@ -26,7 +26,7 @@ class SourceTable
       wait.until { driver.find_element(id: 'left_MNU02') }
 
       p driver.title
-      driver.save_screenshot("ss.png")
+      driver.save_screenshot(cache_file)
 
       # Load Serch画面表示
       driver.navigate.to('http://182.248.151.3/LoadQuery/loadQuery.do?method=defaultPage')
