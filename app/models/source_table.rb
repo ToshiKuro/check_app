@@ -24,22 +24,23 @@ class SourceTable
       id.send_keys(ID)
       pass.send_keys(PASS)
 
-      driver.find_element(:xpath, '/html/body/form/div/table[2]/tbody/tr[4]/td/input[1]').click 
-
-
-      p driver.title
-      p ID
-      p pass
-      # driver.save_screenshot(cache_file)
-
+      driver.find_element(:xpath, '/html/body/form/div/table[2]/tbody/tr[4]/td/input[1]').click
       wait.until { driver.find_element(id: 'left_MNU02') }
 
       p driver.title
 
       # Load Serch画面表示
       driver.navigate.to('http://182.248.151.3/LoadQuery/loadQuery.do?method=defaultPage')
+
+
+      p driver.title
+      p driver.title
+
+
       wait.until { driver.find_element(id: 'search') }
 
+      p driver.title
+      p driver.title
       p driver.title
 
       # 日付選択
