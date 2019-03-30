@@ -38,19 +38,9 @@ class SourceTable
 
       # 国際線data取得
       driver.find_element(:xpath, '//*[@id="domInt"]/option[1]').click
-
-      # ここまでok
       driver.find_element(:xpath, '//*[@id="flightNo"]').click
       driver.find_element(:xpath, '//*[@id="search"]').click
-
-      p ID
-
       wait.until { driver.find_element(id: 'flexTable').displayed? }
-
-      driver.save_screenshot("screenshot3.png")
-
-      p ID
-      p ID
 
       doc = Nokogiri::HTML(driver.page_source)
       doc.xpath('//*[@id="flexTable"]/tbody/tr').each do |tr|
@@ -60,11 +50,6 @@ class SourceTable
         table << table_tr
         table_tr = []
       end
-
-      driver.save_screenshot("screenshot4.png")
-      p ID
-      p ID
-      p ID
 
       # 一度戻りtableをreset
       driver.navigate.back
@@ -81,8 +66,6 @@ class SourceTable
       driver.find_element(:xpath, '//*[@id="flightNo"]').click
       driver.find_element(:xpath, '//*[@id="search"]').click
       wait.until { driver.find_element(id: 'flexTable').displayed? }
-
-      driver.save_screenshot("screenshot5.png")
 
       doc = Nokogiri::HTML(driver.page_source)
       doc.xpath('//*[@id="flexTable"]/tbody/tr').each do |tr|
@@ -101,13 +84,6 @@ class SourceTable
           Source.find_or_initialize_by(col1: source[:col1]).update_attributes(source)
         end
       end
-
-
-      p ID
-      p ID
-      p ID
-      p ID
-      p ID
 
       driver.quit
 

@@ -11,7 +11,7 @@ class ListsController < ApplicationController
 
   def show
     @list = params[:id].nil? ? List.first : List.find(params[:id])
-    @title = "<#{@list.name} チェク・リスト>"
+    # @title = "<#{@list.name} チェク・リスト>"
   end
 
   def create
