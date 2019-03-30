@@ -40,17 +40,14 @@ class SourceTable
       driver.find_element(:xpath, '//*[@id="domInt"]/option[1]').click
 
       # ここまでok
-      sleep 3
-      driver.manage.window.maximize
+      driver.find_element(:xpath, '//*[@id="flightNo"]').click
       driver.find_element(:xpath, '//*[@id="search"]').click
-
-      driver.save_screenshot("screenshot.png")
 
       p ID
 
       wait.until { driver.find_element(id: 'flexTable').displayed? }
 
-      driver.save_screenshot("screenshot.png")
+      driver.save_screenshot("screenshot3.png")
 
       p ID
       p ID
@@ -64,7 +61,7 @@ class SourceTable
         table_tr = []
       end
 
-      driver.save_screenshot("screenshot.png")
+      driver.save_screenshot("screenshot4.png")
       p ID
       p ID
       p ID
@@ -81,10 +78,11 @@ class SourceTable
       # 国内線data取得
       n = 2
       driver.find_element(:xpath, "//*[@id=\"domInt\"]/option[#{n}]").click
+      driver.find_element(:xpath, '//*[@id="flightNo"]').click
       driver.find_element(:xpath, '//*[@id="search"]').click
       wait.until { driver.find_element(id: 'flexTable').displayed? }
 
-      driver.save_screenshot("screenshot2.png")
+      driver.save_screenshot("screenshot5.png")
 
       doc = Nokogiri::HTML(driver.page_source)
       doc.xpath('//*[@id="flexTable"]/tbody/tr').each do |tr|
