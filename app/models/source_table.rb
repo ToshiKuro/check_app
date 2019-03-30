@@ -53,6 +53,8 @@ class SourceTable
 
       driver.save_screenshot("screenshot.png")
 
+      p driver.title
+
       doc = Nokogiri::HTML(driver.page_source)
       doc.xpath('//*[@id="flexTable"]/tbody/tr').each do |tr|
         tr.css('td').each do |td|
