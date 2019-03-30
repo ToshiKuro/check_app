@@ -1,7 +1,7 @@
 class SourceTable
 
-  ID     = Rails.application.config.source.id
-  PASS   = Rails.application.config.source.pass
+  ID     = Rails.application.credentials.id
+  PASS   = Rails.application.credentials.pass
 
   class << self
     def get_table(select_date)
@@ -24,6 +24,9 @@ class SourceTable
 
       driver.find_element(:xpath, '/html/body/form/div/table[2]/tbody/tr[4]/td/input[1]').click 
       wait.until { driver.find_element(id: 'left_MNU02') }
+
+      p driver.title
+      driver.save_screenshot("ss.png")
 
       # Load Serch画面表示
       driver.navigate.to('http://182.248.151.3/LoadQuery/loadQuery.do?method=defaultPage')
