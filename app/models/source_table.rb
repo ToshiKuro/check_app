@@ -27,33 +27,53 @@ class SourceTable
       driver.find_element(:xpath, '/html/body/form/div/table[2]/tbody/tr[4]/td/input[1]').click
       wait.until { driver.find_element(id: 'left_MNU02') }
 
-      p driver.title
-
       # Load Serch画面表示
       driver.navigate.to('http://182.248.151.3/LoadQuery/loadQuery.do?method=defaultPage')
-
-
-      p driver.title
-      p driver.title
-
-
       wait.until { driver.find_element(id: 'search') }
 
-      p driver.title
-      p driver.title
-      p driver.title
-
-      # 日付選択
+      # 日付選択 ここまでok
       driver.execute_script("document.getElementById('queryDate').readOnly = false;")
+
+      p ID
+
       driver.find_element(:xpath, '//*[@id="queryDate"]').clear
+
+      p ID
+      p ID
+
       driver.find_element(:xpath, '//*[@id="queryDate"]').send_keys(select_date)
+
+      p ID
+      p ID
+      p ID
 
       # 国際線data取得
       driver.find_element(:xpath, '//*[@id="domInt"]/option[1]').click
+
+
+      p ID
+      p ID
+      p ID
+      p ID
+
       driver.find_element(:xpath, '//*[@id="search"]').click
+
+      p ID
+      p ID
+      p ID
+      p ID
+      p ID
+
       wait.until { driver.find_element(id: 'flexTable').displayed? }
 
-      driver.save_screenshot("screenshot.png")
+      
+      p ID
+      p ID
+      p ID
+      p ID
+      p ID
+
+      # driver.save_screenshot("screenshot.png")
 
       p driver.title
 
@@ -100,6 +120,13 @@ class SourceTable
           Source.find_or_initialize_by(col1: source[:col1]).update_attributes(source)
         end
       end
+
+
+      p ID
+      p ID
+      p ID
+      p ID
+      p ID
 
       driver.quit
 
