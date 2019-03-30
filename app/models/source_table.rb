@@ -31,51 +31,24 @@ class SourceTable
       driver.navigate.to('http://182.248.151.3/LoadQuery/loadQuery.do?method=defaultPage')
       wait.until { driver.find_element(id: 'search') }
 
-      # 日付選択 ここまでok
+      # 日付選択 
       driver.execute_script("document.getElementById('queryDate').readOnly = false;")
-
-      p ID
-
       driver.find_element(:xpath, '//*[@id="queryDate"]').clear
-
-      p ID
-      p ID
-
       driver.find_element(:xpath, '//*[@id="queryDate"]').send_keys(select_date)
-
-      p ID
-      p ID
-      p ID
 
       # 国際線data取得
       driver.find_element(:xpath, '//*[@id="domInt"]/option[1]').click
 
-
-      p ID
-      p ID
-      p ID
-      p ID
-
+      # ここまでok
+      sleep 3
       driver.find_element(:xpath, '//*[@id="search"]').click
 
-      p ID
-      p ID
-      p ID
-      p ID
       p ID
 
       wait.until { driver.find_element(id: 'flexTable').displayed? }
 
-      
       p ID
       p ID
-      p ID
-      p ID
-      p ID
-
-      # driver.save_screenshot("screenshot.png")
-
-      p driver.title
 
       doc = Nokogiri::HTML(driver.page_source)
       doc.xpath('//*[@id="flexTable"]/tbody/tr').each do |tr|
@@ -85,6 +58,10 @@ class SourceTable
         table << table_tr
         table_tr = []
       end
+
+      p ID
+      p ID
+      p ID
 
       # 一度戻りtableをreset
       driver.navigate.back
