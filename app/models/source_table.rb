@@ -43,7 +43,7 @@ class SourceTable
 
       # ここまでok
       sleep 3
-      driver.find_element(:xpath, '//*[@id="search"]').click
+      driver.find_element(:xpath, '//*[@id="search"]').submit
 
       p ID
 
