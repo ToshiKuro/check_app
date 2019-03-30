@@ -3,6 +3,8 @@ class SourceTable
   ID     = Rails.application.credentials.id
   PASS   = Rails.application.credentials.pass
 
+  p Rails.application.credentials.id
+
   class << self
     def get_table(select_date)
 
