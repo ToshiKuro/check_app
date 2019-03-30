@@ -9,7 +9,7 @@ class SourceTable
       options  = Selenium::WebDriver::Chrome::Options.new
       options.add_argument('--headless')
       driver   = Selenium::WebDriver.for :chrome, options: options
-      wait     = Selenium::WebDriver::Wait.new(timeout: 10)
+      wait     = Selenium::WebDriver::Wait.new(timeout: 30)
       table    = []
       table_tr = []
 
@@ -23,6 +23,11 @@ class SourceTable
       pass.send_keys(PASS)
 
       driver.find_element(:xpath, '/html/body/form/div/table[2]/tbody/tr[4]/td/input[1]').click 
+
+
+      p driver.title
+      driver.save_screenshot(cache_file)
+
       wait.until { driver.find_element(id: 'left_MNU02') }
 
       p driver.title
