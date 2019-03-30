@@ -34,20 +34,23 @@ class SourceTable
       # 日付選択 
       driver.execute_script("document.getElementById('queryDate').readOnly = false;")
       driver.find_element(:xpath, '//*[@id="queryDate"]').clear
-      driver.find_element(:xpath, '//*[@id="queryDate"]').send_keys('2019-03-28')
-
-      p select_date
+      driver.find_element(:xpath, '//*[@id="queryDate"]').send_keys(select_date)
 
       # 国際線data取得
       driver.find_element(:xpath, '//*[@id="domInt"]/option[1]').click
 
       # ここまでok
       sleep 3
-      driver.find_element(:xpath, '//*[@id="search"]').submit
+      driver.manage.window.maximize
+      driver.find_element(:xpath, '//*[@id="search"]').click
+
+      driver.save_screenshot("screenshot.png")
 
       p ID
 
       wait.until { driver.find_element(id: 'flexTable').displayed? }
+
+      driver.save_screenshot("screenshot.png")
 
       p ID
       p ID
@@ -61,6 +64,7 @@ class SourceTable
         table_tr = []
       end
 
+      driver.save_screenshot("screenshot.png")
       p ID
       p ID
       p ID
