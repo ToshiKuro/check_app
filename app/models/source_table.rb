@@ -29,6 +29,7 @@ class SourceTable
 
       p driver.title
       p ID
+      p pass
       # driver.save_screenshot(cache_file)
 
       wait.until { driver.find_element(id: 'left_MNU02') }
