@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     # render plain: params.inspect
     # binding.pry
     @user = User.find_by(name: params[:user][:name])
-    @items = Item.where(list_id: @user.lists).order(:name).group(:path)
+    @items = Item.where(list_id: @user.lists).order(:name).select(:url).uniq
     render layout: 'normal'
   end
 
