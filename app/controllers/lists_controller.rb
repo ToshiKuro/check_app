@@ -10,6 +10,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    binding.pry
     @list = params[:id].nil? ? List.first : List.find(params[:id])
     @title = "<#{@list.name} チェク・リスト>"
   end
