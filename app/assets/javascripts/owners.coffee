@@ -21,5 +21,3 @@ ready = ->
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
-
-https://web-checklist.herokuapp.com/users/show
