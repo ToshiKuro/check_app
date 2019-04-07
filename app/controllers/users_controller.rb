@@ -19,8 +19,9 @@ class UsersController < ApplicationController
     # item_file = Item.where(list_id: @user.lists).group(:file)
     # item_url  = Item.where(list_id: @user.lists).group(:url)
     # item_select = item_file + item_url
+
     @items = []
-    
+
     item_file.each do |item|
       if !item[:file].blank?
         @items << items.find_by(file: item[:file])
@@ -99,11 +100,12 @@ class UsersController < ApplicationController
 
   def get_image
     image = Item.find_by(name: params[:image_name])
-    if image.file.blank?
+    if image[:file].blank?
       image = image.url
     else
       image = image.file.url
     end
+    # binding.pry
     render json: {image: image}
   end
 

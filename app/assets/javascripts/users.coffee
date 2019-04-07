@@ -38,29 +38,8 @@ ready = ->
     doc = document.getElementById('print_image').getAttribute('data')
 
     if doc.split('.').pop() == 'pdf'
-      # window.open(doc).print()
-      # sub = window.open(doc)
-      # sub.close()
       sub = window.open(doc, null, 'width=500,toolbar=yes,menubar=yes,scrollbars=yes').print()
-      # window.focus()
-      # sub.focus()
       sub.close
-      # setTimeout (->
-      #   window.open(doc).print()
-      #   return
-      # ), 1000
-
-
-      # window.focus()
-      # window.open(doc).print()
-      # sub.focus()
-      # window.focus()
-      # sub.focus().print()
-      # window.open(doc).print()
-      # sub.close()
-      # window.open('_self').close()
-      # window.open('about:blank','_self').close()
-      # subwindow.close()
     else
       #エリア全体を非表示
       $('.print_off').hide()
