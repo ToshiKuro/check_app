@@ -19,9 +19,9 @@ class UsersController < ApplicationController
     # item_url  = items.group(:url)
     # item_select = item_file + item_url
 
-    # item_file = Item.where(list_id: @user.lists).group(:file)
-    item_url  = Item.where(list_id: @user.lists).group(:url)
-    item_select = item_url
+    item_file = Item.group(:file).where(list_id: @user.lists)
+    item_url  = Item.group(:url).where(list_id: @user.lists)
+    item_select = item_file + item_url
     @items = []
     
     item_select.each do |item|
