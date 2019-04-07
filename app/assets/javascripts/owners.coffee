@@ -5,7 +5,7 @@
 ready = ->
 
   $ ->
-    if location.href == 'http://localhost:3000/owners/show'
+    if location.href == 'http://localhost:3000/owners/show' || location.href == 'http://localhost:3000/owners/show?'
       id = setTimeout (->
         location.reload()
         return

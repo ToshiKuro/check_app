@@ -91,18 +91,3 @@ class SourceTable
   end
 
 end
-
-      # driver.save_screenshot("screenshot.png")
-      # driver.close
-
-      # # 別タブで展開
-      # driver.execute_script("window.open()") #make new tab
-      # driver.switch_to.window(driver.window_handles[1]) #switch new tab
-
-      # wait.until { driver.navigate.refresh }
-      # wait.until{ !driver.find_element(id: 'flexTable').displayed? }
-      # wait.until { driver.find_element(id: 'flexTable').displayed? }
-      # e = wait.until { e.displayed? && e.enabled? }
-      # wait.until { driver.displayed? && driver.enabled? }
-      # wait.until { driver.element_to_be_clickable(:xpath, '//*[@id="flexTable"]/tbody/tr/td') }
-      # sleep 2

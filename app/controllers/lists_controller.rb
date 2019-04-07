@@ -19,7 +19,7 @@ class ListsController < ApplicationController
       list = List.create(list_params)
       redirect_to owners_index_path
     else
-      redirect_back(fallback_location: root_path)
+      redirect_to owners_list_new_path
       flash[:notice] = 'アクセス権限がありません'
     end
   end

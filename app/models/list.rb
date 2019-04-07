@@ -4,9 +4,6 @@ class List < ApplicationRecord
   has_many :users, through: :owners
   has_many :items
 
+  validates :name, presence: true, uniqueness: true, format: { with: /[A-Z0-9]/ }
+
 end
-
-
-  # scope :item_select, -> (list_names) { where(name: list_names).group(:address).order(:id) }
-
-  # belongs_to :lists

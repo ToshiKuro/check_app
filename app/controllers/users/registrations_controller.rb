@@ -59,6 +59,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # if !current_user_is_admin?
     #   sign_in(resource_name, resource)
     # end
+
+    # if !current_user.try(:admin?)
+      # sign_in(current_user)
+    # else
+      # redirect_to owners_new_path, notice: 'アクセス権限がありません'
+    # end
   end
 
   # If you have extra params to permit, append them to the sanitizer.

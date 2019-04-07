@@ -11,10 +11,21 @@ class UsersController < ApplicationController
   end
 
   def show
-    # render plain: params.inspect
-    # binding.pry
     @user = User.find_by(name: params[:user][:name])
-    @items = Item.where(list_id: @user.lists).order(:name).select(:url).uniq
+    items = Item.where(list_id: @user.lists).distinct
+    item_file = items.group(:file)
+    item_url  = items.group(:url)
+    item_select = item_file + item_url
+    @items = []
+    
+    item_select.uniq.each do |item|
+      if !item.file.blank?
+        @items << item
+      elsif item.file.blank? && !item.url.blank?
+        @items << item
+      end
+    end
+
     render layout: 'normal'
   end
 
@@ -82,7 +93,7 @@ class UsersController < ApplicationController
   def get_image
     image = Item.find_by(name: params[:image_name])
     if image.file.blank?
-      image = image.path
+      image = image.url
     else
       image = image.file.url
     end

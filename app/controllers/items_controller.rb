@@ -17,35 +17,28 @@ class ItemsController < ApplicationController
   def create
     if current_user.try(:admin?)
       item = Item.create(item_params)
-      redirect_to owners_index_path
+      redirect_to lists_show_path(id: params[:item][:list_id])
     else
-      redirect_back(fallback_location: root_path)
-      flash[:notice] = 'アクセス権限がありません'
+      redirect_to owners_list_new_path, notice: 'アクセス権限がありません'
     end
   end
 
   def edit    
     @title = '＜チェック・リスト編集画面＞'
-    # binding.pry
     if current_user.try(:admin?)
       @item = Item.find(params[:id])
     else
-      redirect_back(fallback_location: root_path)
-      flash[:notice] = 'アクセス権限がありません'
+      redirect_to item_edit_path, notice: 'アクセス権限がありません'
     end
   end
 
   def update
-    # binding.pry
     item = Item.find(params[:id])
-    # binding.pry
-    # unless item.file == params[:file]
     if params[:item][:file].blank?
       item.remove_file!
       item.save
     end
     if item.update(item_params)
-      # binding.pry
       redirect_to lists_show_path(id: item.list_id)
     else
       render 'edit'
@@ -55,8 +48,9 @@ class ItemsController < ApplicationController
   def destroy
     if current_user.try(:admin?)
       item = Item.find(params[:id])
+      list_id = item.list_id
       item.destroy
-      redirect_to lists_show_path(id: item.list_id)
+      redirect_to lists_show_path(id: list_id)
     else
       redirect_back(fallback_location: root_path)
       flash[:notice] = 'アクセス権限がありません'

@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
+  before_action :authenticate_user!
+
   protected
 
   def configure_permitted_parameters
@@ -43,4 +45,3 @@ class ApplicationController < ActionController::Base
   end
 
 end
-# current_page?(controller: 'foo', action: 'bar')

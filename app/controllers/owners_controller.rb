@@ -35,7 +35,7 @@ class OwnersController < ApplicationController
 
   def create
     if current_user.try(:admin?)
-      lists = params[:list].select {|k,v| v == "1" }      #check boxでcheckしたものを抽出
+      lists = params[:name].select {|k,v| v == "1" }      #check boxでcheckしたものを抽出
       lists.each do |list|
         owner = Owner.new
         owner.user_id = User.find_by(name: params[:owner][:user]).id
@@ -44,8 +44,7 @@ class OwnersController < ApplicationController
       end
       redirect_to owners_show_path
     else
-      redirect_back(fallback_location: root_path)
-      flash[:notice] = 'アクセス権限がありません'
+      redirect_to owners_new_path, notice: 'アクセス権限がありません'
     end
   end
 
@@ -66,8 +65,7 @@ class OwnersController < ApplicationController
         render 'edit'
       end
     else
-      redirect_back(fallback_location: root_path)
-      flash[:notice] = 'アクセス権限がありません'
+      redirect_to owners_update_path, notice: 'アクセス権限がありません'
     end
   end
 

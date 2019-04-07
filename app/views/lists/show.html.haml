@@ -2,7 +2,7 @@
 
 = form_with url: lists_show_path, method: :get, local: true do |f|
   = f.label :id, '便選択'
-  = f.collection_select :id, List.order(:name), :id, :name, include_blank: :true
+  = f.collection_select :id, List.select(:id, :name).distinct.order(:name), :id, :name, include_blank: :true
   = f.submit :submit
 
 %table{border: 1}
