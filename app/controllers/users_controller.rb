@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(name: params[:user][:name])
+    @user = User.find(params[:user][:id])
     items = Item.where(list_id: @user.lists).distinct
     item_file = items.group(:file)
     item_url  = items.group(:url)
