@@ -12,10 +12,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:user][:id])
-    items = Item.where(list_id: @user.lists).distinct
-    item_file = items.group(:file)
-    item_url  = items.group(:url)
-    item_select = item_file + item_url
+    item_select = Item.where(list_id: @user.lists).distinct
+    # items = Item.where(list_id: @user.lists).distinct
+    # item_file = items.group(:file)
+    # item_url  = items.group(:url)
+    # item_select = item_file + item_url
     @items = []
     
     item_select.uniq.each do |item|
