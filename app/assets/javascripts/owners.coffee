@@ -5,11 +5,7 @@
 ready = ->
 
   $ ->
-    # development環境
-    # if location.href == 'http://localhost:3000/owners/show' || location.href == 'http://localhost:3000/owners/show?'
-
-    # production環境
-    if location.href == 'https://web-checklist.herokuapp.com/users/show' || location.href == 'https://web-checklist.herokuapp.com/users/show?'
+    if $('#center_top').text() == '＜運航管理者監視画面＞'
       id = setTimeout (->
         location.reload()
         return

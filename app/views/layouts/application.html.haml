@@ -28,6 +28,6 @@
           = button_to '新規ユーザー登録', new_user_registration_path, method: :get, class: 'button'
           = button_to '新規便/リスト項目登録', owners_list_new_path, method: :get, class: 'button'
       .center
-        .center_top= @title
-        .center_main
+        #center_top= @title
+        #center_main
           = yield

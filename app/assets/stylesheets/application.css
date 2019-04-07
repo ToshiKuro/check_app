@@ -83,7 +83,7 @@ body {
   border-left: 1px solid #777777;
 }
 
-.center_top{
+#center_top{
   height: 20px;
   width: 100%;
   text-align: center;
@@ -91,7 +91,7 @@ body {
   border-bottom: 3px double #8DB2E3;
 }
 
-.center_main{
+#center_main{
   height: 100%;
   width: 100%;
 }
