@@ -100,11 +100,12 @@ class UsersController < ApplicationController
 
   def get_image
     image = Item.find_by(name: params[:image_name])
-    if image.file.blank?
+    if image[:file].blank?
       image = image.url
     else
       image = image.file.url
     end
+    # binding.pry
     render json: {image: image}
   end
 
