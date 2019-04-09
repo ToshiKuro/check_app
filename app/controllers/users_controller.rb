@@ -34,6 +34,8 @@ class UsersController < ApplicationController
       end
     end
 
+    # binding.pry
+
     render layout: 'normal'
   end
 
@@ -90,8 +92,10 @@ class UsersController < ApplicationController
   def acknowledgment
     @user = User.find_by(name: params[:ack_user])
     @items = Item.where(list_id: @user.lists).order(:name).group(:path)
-    owner = Owner.where(user_id: @user.id)
-    owner.update(acknowledgment: Time.current)
+    owners = Owner.where(user_id: @user.id)
+    owners.each do |owner|
+      owner.update(acknowledgment: Time.current, fuel: params["#{owner.list_id}"][:fuel], fl: params["#{owner.list_id}"][:fl], msg: params[:msg])
+    end
     respond_to do |format|                                                  #respond_toメソッドで結果をどのフォーマットで返すかを指定
       format.html { render :show }
       format.js { render :show }
@@ -113,10 +117,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name)
-  end
-
-  def list_params
-    params.require(:list).permit(:name)
   end
 
 end

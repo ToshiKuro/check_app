@@ -16,6 +16,7 @@ ready = ->
     button_id = $(this).attr('id')
     check_box_id = button_id.replace('button', 'check_box')
     $('#' + check_box_id).prop 'disabled', false
+    $('h4#item_title').html $(this).text()
 
     #imageを取得
     image_name = $(this).text()
@@ -49,6 +50,12 @@ ready = ->
       #window.printの実行後、プリントした画像を削除し、エリアを再表示
       $('#print_on').html("")
       $('.print_off').show()
+    return
+
+
+  $('input#acknowledgment').click ->
+    $('td#accept_ack').css 'color', 'Red'
+    # $('h4#item_title').css 'color', 'Red'
     return
 
 $(document).ready(ready)

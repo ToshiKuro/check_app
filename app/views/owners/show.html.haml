@@ -1,18 +1,40 @@
 / %h2 運航管理者監視画面
 
-%table{border: 1}
+%table{border: 1, width: 1300}
   %tr
+    %th{width: 40} 確認
+    %th{width: 90} 承認
     %th PIC
-    %th 承認
+    %th{width: 90}  MSG
     %th 便名
-    %th{ colspan: @items_max_number} チェック・リスト項目
+    %th{width: 90} FUEL
+    %th{width: 90} FLT LVL
+    %th{colspan: @items_max_number} チェック・リスト項目
   - @owners.each do |owner|
     %tr
-      %td= User.find(owner.user_id).name
-      %td= owner.acknowledgment
+      - if @user_id_ck == '' || @user_id_ck != owner.user_id
+        - n = @owners.where(user_id: owner.user_id).size
+        %td{rowspan: n, :style => 'text-align: center;'}
+          %button#ck_button{type: 'button'} 確認
+        - if owner.acknowledgment.blank?
+          %td#accept_ack{rowspan: n}= owner.acknowledgment
+        - else
+          %td#accept_ack{rowspan: n}= owner.acknowledgment.strftime("%Y-%m-%d %H:%M %Z")
+        %td{rowspan: n}= User.find(owner.user_id).name
+        %td{rowspan: n}= owner.msg
       %td= link_to List.find(owner.list_id).name, lists_show_path(id: owner.list_id)
+      %td= owner.fuel
+      %td= owner.fl
       - List.find(owner.list_id).items.each do |item|
-        - if item.file.blank?
+        - if !item.file.blank?
+          %td= link_to item.name, item.file.url, target: '_blank'
+        - elsif !item.url.blank?
           %td= link_to item.name, item.url, target: '_blank'
         - else
-          %td= link_to item.name, item.file.url, target: '_blank'
+          %td= item.name
+      - @user_id_ck = owner.user_id
+    / - if user_id_ck != 
+    / %tr
+    /   %td.button01{id: 'owner_ack'}= '確認'
+    /   %td{colspan: @items_max_number}
+    / - user_id_ck = owner.user_id 

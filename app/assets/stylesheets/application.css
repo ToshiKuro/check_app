@@ -32,6 +32,11 @@ body {
   height: 100%;
 }
 
+a {
+  color: #0000FF;
+  text-decoration: none;
+}
+
 
 /*共通レイアウト*/
 .header{

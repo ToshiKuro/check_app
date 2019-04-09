@@ -4,27 +4,47 @@
 
   %h2= 'PIC： ' + @user.name
 
-  %table{border: 1, height: 800, width: 1200}
-    %tr{height: 20}
-      %th{width: '10%'}
-      %th{width: '90%'}
-    %tr{height: 780}
-      %td{valign: 'top'}
-        = form_with url: users_acknowledgment_path do |f|          # , method: :get, local: true -> html
+  %table{border: 1, height: 800, width: 1300}
+    = form_with url: users_acknowledgment_path do |f|          # , method: :get, local: true -> html
+      %tr{height: 20}
+        %td{width: '10%'}
+        %td{width: '90%'}
+          %h4#item_title
+      %tr{height: '10%'}
+        %td{valign: 'top', width: '10%'}
+          %h4 CHECK PLZ
           %table#ack_chk_boxes
             - @items.each do |item|
               %tr
                 %td.button01{id: "button#{item.id}"}= item.name
                 %td= check_box :item, item.name, id: "check_box#{item.id}", class: 'ack_chk_box', disabled: 'disabled'
+          %button#print_button{type: 'button'} Print
+        %td#image{rowspan: 3, valign: 'top', width: '90%'}
 
-          / %a{href: "https://www.data.jma.go.jp/airinfo/data/pict/fbjp/fbjp.png", width: '100%', height: 'auto'} 印刷
-          / %input{:onclick => "window.print();", :type => "button", :value => "印刷"}
-          %button#print_button{type: 'button'}
-            Print
+      %tr{height: '10%'}
+        %td{valign: 'top', width: '10%'}
+          %h4 INPUT MSG
+          %table.messeage
+            - @user.lists.each do |list|
+              = f.fields_for "#{list.id}" do |msg|
+                %tr
+                  %td{width: '50px'}= msg.label :name, list.name + ':', id: 'flt_no'
+                %tr
+                  %td{width: '40px'}= msg.label :fuel, 'FUEL'
+                  %td{width: '120px'}= msg.text_field :fuel, id: 'fuel'
+                %tr
+                  %td{width: '60px'}= msg.label :fl, 'FL'
+                  %td{width: '120px'}= msg.text_field :fl, id: 'fl'
+            %tr
+              %td{colspan: 2}= f.label :name, 'OTR MSG', id: 'msg_label'
+            %tr
+              %td{colspan: 2}= f.text_area :msg, id: 'msg_area'
 
+      %tr{height: '80%'}
+        %td{valign: 'top', width: '10%'}
           = f.hidden_field :ack_user, value: @user.name
           = f.submit 'Acknowledgment', id: 'acknowledgment', disabled: 'disabled'
+
           %h5#sended= ''
-      %td#image{valign: 'top'}
 
 %p#print_on

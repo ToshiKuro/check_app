@@ -26,11 +26,13 @@ class OwnersController < ApplicationController
     @title = '＜運航管理者監視画面＞'
     @owners = Owner.all
     @items_max_number = 0
+    @user_id_ck = ''
     @owners.each do |owner|
       if @items_max_number < List.find(owner.list_id).items.count
         @items_max_number = List.find(owner.list_id).items.count
       end
     end
+    # binding.pry
   end
 
   def create
@@ -78,7 +80,7 @@ class OwnersController < ApplicationController
   private
 
   def owner_params
-    params.require(:owner).permit(:user, :list)
+    params.require(:owner).permit(:user, :list, :acknowledgment, :fuel, :fl, :msg, :etd, :send_list)
   end
 
 end

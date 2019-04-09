@@ -16,3 +16,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+// $('input#acknowledgment').click(function(){
+//   $('td#accept_ack').css('background','pink');
+//   $('h4#item_title').css('background','pink');
+// });

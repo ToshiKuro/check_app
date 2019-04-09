@@ -4,7 +4,11 @@ class CreateOwners < ActiveRecord::Migration[5.2]
       t.integer  :user_id
       t.integer  :list_id
       t.datetime :acknowledgment
-      t.date     :date
+      t.string   :fuel
+      t.string   :fl
+      t.string   :msg
+      t.datetime :etd
+      t.string   :send_list
 
       t.timestamps
     end

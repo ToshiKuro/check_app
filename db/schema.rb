@@ -32,7 +32,11 @@ ActiveRecord::Schema.define(version: 2019_03_19_041139) do
     t.integer "user_id"
     t.integer "list_id"
     t.datetime "acknowledgment"
-    t.date "date"
+    t.string "fuel"
+    t.string "fl"
+    t.string "msg"
+    t.datetime "etd"
+    t.string "send_list"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

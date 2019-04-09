@@ -55,6 +55,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def sign_up(resource_name, resource)
     sign_in(current_user)
+    @title = '＜新規ユーザー登録＞'
     # render layout: 'normal'
     # if !current_user_is_admin?
     #   sign_in(resource_name, resource)

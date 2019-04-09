@@ -20,3 +20,48 @@ object {
   color: black;
   width: 80px;
 }
+
+.messeage{
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 8px;
+  border: 0px;
+  margin: 0;
+  padding: 0;
+  td{
+    margin: 0;
+    padding: 0;
+  }
+}
+
+input#fuel, input#fl{
+  height: 10px;
+  width: 80px;
+  padding: 0;
+  margin: 0;
+}
+
+label#flt_no{
+  font-size: 10px;
+  font-weight: bold;
+}
+
+label#msg_label{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+textarea#msg_area{
+  width: 95%;
+  height: 50px;
+}
+
+.ack_chk_box{
+  width: 15px;
+  height: 15px;
+}
+
+h4#item_title{
+  text-align: center;
+}
+
