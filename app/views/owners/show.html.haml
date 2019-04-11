@@ -1,4 +1,3 @@
-
 / %h2 運航管理者監視画面
 
 %table{border: 1, width: 1300}
@@ -13,8 +12,8 @@
     %th{colspan: @items_max_number} チェック・リスト項目
   - @owners.each do |owner|
     %tr
-      - if @user_id_ck == ''
-        - n = @owners.where(user_id: owner.user_id).size
+      - if @user_id_ck == '' || @user_id_ck != owner.user_id
+        - n = 3
         %td{rowspan: n, :style => 'text-align: center;'}
           %button#ck_button{type: 'button'} 確認
         - if owner.acknowledgment.blank?
