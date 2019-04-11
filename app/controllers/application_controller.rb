@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource.belongs
     when 'foc'
-      owners_show_path
+      owners_index_path
     when 'pic'
       users_index_path
     else
