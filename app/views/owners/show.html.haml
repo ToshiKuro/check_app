@@ -21,7 +21,7 @@
         - else
           %td#accept_ack{rowspan: n}= owner.acknowledgment.strftime("%Y-%m-%d %H:%M %Z")
         %td{rowspan: n}= User.find(owner.user_id).name
-        %td{rowspan: n}= owner.msg
+        %td{rowspan: n}= owner[:msg]
       %td= link_to List.find(owner.list_id).name, lists_show_path(id: owner.list_id)
       %td= owner.fuel
       %td= owner.fl
