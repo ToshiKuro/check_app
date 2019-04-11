@@ -14,15 +14,15 @@
   - @owners.each do |owner|
     %tr
       - if @user_id_ck == '' || @user_id_ck != owner.user_id
-        - n = @owners.where(user_id: owner.user_id).size
-        %td{rowspan: n, :style => 'text-align: center;'}
+        / - n = @owners.where(user_id: owner.user_id).size
+        %td{rowspan: 3, :style => 'text-align: center;'}
           %button#ck_button{type: 'button'} 確認
         - if owner.acknowledgment.blank?
-          %td#accept_ack{rowspan: n}= owner.acknowledgment
+          %td#accept_ack{rowspan: 3}= owner.acknowledgment
         - else
-          / %td#accept_ack{rowspan: n}= owner.acknowledgment.strftime("%Y-%m-%d %H:%M %Z")
-        %td{rowspan: n}= User.find(owner.user_id).name
-        %td{rowspan: n}= owner.msg
+          %td#accept_ack{rowspan: 3}= owner.acknowledgment.strftime("%Y-%m-%d %H:%M %Z")
+        %td{rowspan: 3}= User.find(owner.user_id).name
+        %td{rowspan: 3}= owner.msg
       %td= link_to List.find(owner.list_id).name, lists_show_path(id: owner.list_id)
       %td= owner.fuel
       %td= owner.fl
