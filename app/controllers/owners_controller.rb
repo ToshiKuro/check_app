@@ -32,7 +32,6 @@ class OwnersController < ApplicationController
         @items_max_number = List.find(owner.list_id).items.count
       end
     end
-    binding.pry
   end
 
   def create
