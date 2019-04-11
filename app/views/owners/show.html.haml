@@ -23,8 +23,8 @@
         %td{rowspan: n}= User.find(owner.user_id).name
         %td{rowspan: n}= owner[:msg]
       %td= link_to List.find(owner.list_id).name, lists_show_path(id: owner.list_id)
-      %td= owner.fuel
-      %td= owner.fl
+      %td= owner[:fuel]
+      %td= owner[:fl]
       - List.find(owner.list_id).items.each do |item|
         - if !item.file.blank?
           %td= link_to item.name, item.file.url, target: '_blank'
