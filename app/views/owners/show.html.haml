@@ -13,8 +13,8 @@
   - @owners.each do |owner|
     %tr
       - if @user_id_ck == '' || @user_id_ck != owner.user_id
-        - n = 3
-        %td{rowspan: n}
+        - n = @owners.where(user_id: owner.user_id).size
+        %td{rowspan: n, :style => 'text-align: center;'}
           %button#ck_button{type: 'button'} 確認
         - if owner.acknowledgment.blank?
           %td#accept_ack{rowspan: n}= owner.acknowledgment
