@@ -31,7 +31,7 @@ class SourceTable
       driver.navigate.to('http://182.248.151.3/LoadQuery/loadQuery.do?method=defaultPage')
       wait.until { driver.find_element(id: 'search') }
 
-      # 日付選択 
+      # 日付選択
       driver.execute_script("document.getElementById('queryDate').readOnly = false;")
       driver.find_element(:xpath, '//*[@id="queryDate"]').clear
       driver.find_element(:xpath, '//*[@id="queryDate"]').send_keys(select_date)

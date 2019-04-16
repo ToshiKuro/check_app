@@ -90,6 +90,7 @@ class UsersController < ApplicationController
   end
 
   def acknowledgment
+    binding.pry
     @user = User.find_by(name: params[:ack_user])
     @items = Item.where(list_id: @user.lists).order(:name).group(:path)
     owners = Owner.where(user_id: @user.id)

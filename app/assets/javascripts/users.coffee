@@ -55,7 +55,7 @@ ready = ->
 
   $('input#acknowledgment').click ->
     $('td#accept_ack').css 'color', 'Red'
-    # $('h4#item_title').css 'color', 'Red'
+    $('h4#item_title').css 'color', 'Red'
     return
 
 $(document).ready(ready)
