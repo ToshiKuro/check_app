@@ -11,12 +11,15 @@ default: &default
 
 development:
   id: <%= ENV["WEB_CHECKLIST_ID"] %>
-  pass: <%= ENV["WEB_CHECKLIST_PWD"] %>
+  pass: <%= ENV["WEB_CHECKLIST_PASS"] %>
+  pic_pass: <%= ENV["WEB_CHECKLIST_PIC_PASS"] %>
 
 test:
   id: <%= ENV["WEB_CHECKLIST_ID"] %>
-  pass: <%= ENV["WEB_CHECKLIST_PWD"] %>
+  pass: <%= ENV["WEB_CHECKLIST_PASS"] %>
+  pic_pass: <%= ENV["WEB_CHECKLIST_PIC_PASS"] %>
 
 production:
   id: <%= ENV["WEB_CHECKLIST_ID"] %>
-  pass: <%= ENV["WEB_CHECKLIST_PWD"] %>
+  pass: <%= ENV["WEB_CHECKLIST_PASS"] %>
+  pic_pass: <%= ENV["WEB_CHECKLIST_PIC_PASS"] %>

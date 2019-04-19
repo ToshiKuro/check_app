@@ -1,7 +1,8 @@
 class SourceTable
 
-  ID     = Rails.application.credentials.id
-  PASS   = Rails.application.credentials.pass
+  ID       = Rails.application.credentials.id
+  PASS     = Rails.application.credentials.pass
+  PIC_PASS = Rails.application.credentials.pic_pass
 
   p Rails.application.credentials.id
 
@@ -82,6 +83,10 @@ class SourceTable
           ary = [key, table].transpose
           source = Hash[*ary.flatten]
           Source.find_or_initialize_by(col1: source[:col1]).update_attributes(source)
+          # binding.pry
+          User.find_by(name: source[:col4]).nil?
+            User.create(name: source[:col4],belongs: 'pic',password: PIC_PASS,admin: false)
+          # Owner.find_or_initialize_by(col1: source[:col1]).update_attributes(source)
         end
       end
 

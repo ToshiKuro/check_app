@@ -1,12 +1,13 @@
 / %h2 PIC搭乗便
 
 = form_for Owner.new do |f|
-  %h4= f.label :user, 'PIC'
-  = f.text_field :user
+  %h4= f.label :id, 'PIC'
+  = f.collection_select :id, User.where(belongs: 'pic').distinct.order(:name), :id, :name, include_blank: :true
   %h4= f.label :date, '搭乗日'
   = f.date_field :date, value: Time.now.strftime('%Y-%m-%d')
   %h4 搭乗便選択
-  - List.select(:name).distinct.order(:name).each do |list|
-    = check_box :name, list.name
-    = label_tag :name, list.name
+  #select_flt
+    - List.select(:name).distinct.order(:name).each do |list|
+      = check_box :name, list.name, {class: 'ck_box_flt'}
+      = label_tag :name, list.name
   %p= f.submit :submit

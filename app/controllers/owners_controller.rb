@@ -36,10 +36,11 @@ class OwnersController < ApplicationController
 
   def create
     if current_user.try(:admin?)
+      binding.pry
       lists = params[:name].select {|k,v| v == "1" }      #check boxでcheckしたものを抽出
       lists.each do |list|
         owner = Owner.new
-        owner.user_id = User.find_by(name: params[:owner][:user]).id
+        owner.user_id = params[:owner][:id]
         owner.list_id = List.find_by(name: list[0]).id
         owner.save
       end
