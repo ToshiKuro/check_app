@@ -76,6 +76,9 @@ end
 gem 'carrierwave'
 gem 'devise'
 
+gem 'cloudinary'
+gem 'fog'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'rails-controller-testing'
