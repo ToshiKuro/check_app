@@ -27,7 +27,9 @@ ready = ->
         'image_name':image_name
     )
     .done (res) ->
-      $('#image').html('<object id="print_image" data="' + res['image'] + '"></object>')
+      # $('#image').html('<object id="print_image" data="' + res['image'] + '"></object>')
+      $('#image').html('<embed id="print_image" width="100%" height="100%" src="' + res['image'] + '">')
+      # $('#image').html('<img id="print_image" src="' + res['image'] + '"></img>')
     .fail (err) ->
       console.log err
       $('#image').text('画像を取得できませんでした')
