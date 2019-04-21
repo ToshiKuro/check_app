@@ -36,7 +36,6 @@ class OwnersController < ApplicationController
 
   def create
     if current_user.try(:admin?)
-      binding.pry
       lists = params[:name].select {|k,v| v == "1" }      #check boxでcheckしたものを抽出
       lists.each do |list|
         owner = Owner.new

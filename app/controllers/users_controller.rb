@@ -34,8 +34,6 @@ class UsersController < ApplicationController
       end
     end
 
-    # binding.pry
-
     render layout: 'normal'
   end
 
@@ -90,7 +88,6 @@ class UsersController < ApplicationController
   end
 
   def acknowledgment
-    binding.pry
     @user = User.find_by(name: params[:ack_user])
     @items = Item.where(list_id: @user.lists).order(:name).group(:path)
     owners = Owner.where(user_id: @user.id)
@@ -110,7 +107,6 @@ class UsersController < ApplicationController
     else
       image = image.file.url
     end
-    # binding.pry
     render json: {image: image}
   end
 

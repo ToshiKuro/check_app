@@ -2,9 +2,27 @@ class UploadFileUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave
+
+  process :convert => 'pdf' # 画像の保存形式
+  process :tags => ['image'] # 保存時に添付されるタグ（管理しやすいように適宜変更しましょう）
+  process :resize_to_limit => [700, 700] # 任意でリサイズの制限
+
+  # 保存する画像の種類をサイズ別に設定
+  version :standard do
+    process :resize_to_fill => [100, 150, :north]
+  end
+
+  version :thumb do
+    process :resize_to_fit => [50, 50]
+  end
+
+  def extension_whitelist
+    %w(pdf png jpg)
+  end
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file                                             #cloudinary installに伴いコメントアウト
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
