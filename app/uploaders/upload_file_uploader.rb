@@ -4,7 +4,7 @@ class UploadFileUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   include Cloudinary::CarrierWave
 
-  process :convert => 'pdf' # 画像の保存形式
+  # process :convert => 'pdf' # 画像の保存形式
   process :tags => ['image'] # 保存時に添付されるタグ（管理しやすいように適宜変更しましょう）
   process :resize_to_limit => [700, 700] # 任意でリサイズの制限
 
