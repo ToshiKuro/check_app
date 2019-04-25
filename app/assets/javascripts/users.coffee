@@ -39,18 +39,20 @@ ready = ->
     #プリントしたいpathの取得
     doc = document.getElementById('print_image').getAttribute('data')
 
-    if doc.split('.').pop() == 'pdf'
-      sub = window.open(doc, null, 'width=500,toolbar=yes,menubar=yes,scrollbars=yes').print()
-      sub.close
-    else
-      #エリア全体を非表示
-      $('.print_off').hide()
-      #プリントしたい画像を挿入
-      $('#print_on').html('<object data="' + doc + '""></object>')
-      window.print()
-      #window.printの実行後、プリントした画像を削除し、エリアを再表示
-      $('#print_on').html("")
-      $('.print_off').show()
+    # if doc.split('.').pop() == 'pdf'
+    #   sub = window.open(doc, null, 'width=500,toolbar=yes,menubar=yes,scrollbars=yes').print()
+    #   sub.close
+    # else
+
+    #エリア全体を非表示
+    $('.print_off').hide()
+    #プリントしたい画像を挿入
+    $('#print_on').html('<object data="' + doc + '""></object>')
+    window.print()
+    #window.printの実行後、プリントした画像を削除し、エリアを再表示
+    $('#print_on').html("")
+    $('.print_off').show()
+    
     return
 
 
