@@ -24,12 +24,11 @@ ready = ->
       url:'get_image',
       type:'get',
       data:
-        'image_name':image_name
+        'image_name':image_name,
+        'id':button_id
     )
     .done (res) ->
       $('#image').html('<object id="print_image" data="' + res['image'] + '"></object>')
-      # $('#image').html('<embed id="print_image" width="100%" height="100%" src="' + res['image'] + '">')
-      # $('#image').html('<img id="print_image" src="' + res['image'] + '"></img>')
     .fail (err) ->
       console.log err
       $('#image').text('画像を取得できませんでした')
@@ -55,10 +54,10 @@ ready = ->
     return
 
 
-  $('input#acknowledgment').click ->
-    $('td#accept_ack').css 'color', 'Red'
-    $('h4#item_title').css 'color', 'Red'
-    return
+  # $('input#acknowledgment').click ->
+  #   $('td#accept_ack').css 'color', 'Red'
+  #   $('h4#item_title').css 'color', 'Red'
+  #   return
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

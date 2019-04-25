@@ -7,6 +7,7 @@ class UploadFileUploader < CarrierWave::Uploader::Base
   process :convert => 'pdf' # 画像の保存形式
   process :tags => ['image'] # 保存時に添付されるタグ（管理しやすいように適宜変更しましょう）
   process :resize_to_limit => [700, 700] # 任意でリサイズの制限
+  cloudinary_transformation :use_filename => true
 
   # 保存する画像の種類をサイズ別に設定
   # version :standard do
@@ -16,6 +17,10 @@ class UploadFileUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
   # end
+
+  def public_id
+    Cloudinary::PreloadedFile.split_format(original_filename).first + "_" + Cloudinary::Utils.random_public_id[0,6]
+  end
 
   def extension_whitelist
     %w(pdf png jpg)

@@ -1,7 +1,7 @@
 / %h2 登録情報
 
 
-%table{width: '1300'}
+%table{width: '3000'}
   %tr
 
     %td{valign: 'top'}
@@ -48,14 +48,6 @@
             %td= link_to item.url, item.url, target: '_blank'
             %td= link_to '編集', item_edit_path(item)
             %td= link_to '削除', item_delete_path(item), method: :delete, data: {confirm: '削除しますか？'}
-
-
-
-
-        / - if item.file =! ''
-        /   %td= link_to item.file, item.file.url, target: '_blank'
-        / - else
-        /   %td= link_to item.path, item.path, target: '_blank'
 
 
 
