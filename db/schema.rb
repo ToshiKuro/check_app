@@ -31,11 +31,13 @@ ActiveRecord::Schema.define(version: 2019_03_19_041139) do
   create_table "owners", force: :cascade do |t|
     t.integer "user_id"
     t.integer "list_id"
+    t.integer "source_id"
     t.datetime "acknowledgment"
     t.string "fuel"
     t.string "fl"
     t.string "msg"
-    t.datetime "etd"
+    t.date "date"
+    t.time "etd"
     t.string "send_list"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

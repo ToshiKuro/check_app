@@ -23,10 +23,12 @@ class OwnersController < ApplicationController
   end
 
   def show
-    @title = '＜運航管理者監視画面＞'
-    @owners = Owner.all
+    @title            = '＜運航管理者監視画面＞'
+    @select_date_from = params[:date_from].nil? ? Time.now.strftime('%Y-%m-%d') : params[:date_from]
+    @select_date_to   = params[:date_to].nil? ? Time.now.strftime('%Y-%m-%d') : params[:date_to]
+    @owners           = Owner.where(date: @select_date_from..@select_date_to).order(:date, :user_id, :etd)
     @items_max_number = 0
-    @user_id_ck = ''
+    @user_id_ck       = ''
     @owners.each do |owner|
       if @items_max_number < List.find(owner.list_id).items.count
         @items_max_number = List.find(owner.list_id).items.count

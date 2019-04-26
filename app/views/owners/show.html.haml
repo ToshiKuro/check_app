@@ -1,11 +1,14 @@
 / %h2 運航管理者監視画面
-= form_with url: source_index_path, method: :get, local: true do |f|
-  = f.date_field :date, value: @select_date
+= form_with url: owners_show_path, method: :get, local: true do |f|
+  = f.date_field :date_from, value: @select_date_from
+  = f.label '〜'
+  = f.date_field :date_to, value: @select_date_to
   = f.submit :submit
 
 
 %table{border: 1, width: 1500}
   %tr
+    %th 日付
     %th{width: 40} 確認
     %th{width: 90} 承認
     %th PIC
@@ -16,8 +19,9 @@
     %th{colspan: @items_max_number} チェック・リスト項目
   - @owners.each do |owner|
     %tr
+      %td= owner[:date].strftime("%m%d")
       - if @user_id_ck == '' || @user_id_ck != owner.user_id
-        - n = @owners.where(user_id: owner.user_id).size
+        - n = @owners.where(user_id: owner.user_id, date: owner.date).size
         %td{rowspan: n, :style => 'text-align: center;'}
           %button#ck_button{type: 'button'} 確認
         - if owner.acknowledgment.blank?
