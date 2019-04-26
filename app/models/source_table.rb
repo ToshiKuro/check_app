@@ -101,7 +101,6 @@ class SourceTable
 
           Owner.find_or_initialize_by(source_id: source[:col1]).update_attributes(
             user_id: user_id, list_id: list_id, date: source[:col3], etd: source[:col8])
-          # binding.pry
         end
       end
 
