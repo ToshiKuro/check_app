@@ -3,6 +3,9 @@
 
 = form_for :user, url: users_show_path, method: :get do |f|
   %p
+    = f.label :id, 'DATE： '
+    = f.date_field :date_pic, value: @select_date_pic
+  %p
     = f.label :id, 'PIC： '
     = f.collection_select :id, User.distinct.order(:name), :id, :name, include_blank: :true
     = f.submit 'Select'

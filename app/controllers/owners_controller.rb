@@ -8,6 +8,7 @@ class OwnersController < ApplicationController
     @users = User.all.order(:name)
     @lists = List.all.order(:name)
     @items = Item.all.order(:list_id)
+    @item_id_ck = ''
   end
 
   def monitoring

@@ -2,6 +2,7 @@
 
 %div.print_off
 
+  %h4= 'DATE：' + @select_date_pic
   %h2= 'PIC： ' + @user.name
 
   %table{border: 1, height: 800, width: 1300}
@@ -14,7 +15,7 @@
         %td{valign: 'top', width: '10%'}
           %h4 CHECK PLZ
           %table#ack_chk_boxes
-            - @items.each do |item|
+            - @items_ck.each do |item|
               %tr
                 %td.button01{id: "button#{item.id}"}= item.name
                 %td= check_box :item, item.name, id: "check_box#{item.id}", class: 'ack_chk_box', disabled: 'disabled'
@@ -25,7 +26,7 @@
         %td{valign: 'top', width: '10%'}
           %h4 INPUT MSG
           %table.messeage
-            - @user.lists.each do |list|
+            - @lists.each do |list|
               = f.fields_for "#{list.id}" do |msg|
                 %tr
                   %td{width: '50px'}= msg.label :name, list.name + ':', id: 'flt_no'

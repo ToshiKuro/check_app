@@ -9,7 +9,7 @@ ready = ->
       id = setTimeout (->
         location.reload()
         return
-      ), 10000
+      ), 60000
       $('input#source_button').click ->
         clearTimeout id
         return

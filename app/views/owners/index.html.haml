@@ -1,55 +1,43 @@
 / %h2 登録情報
 
+#tables
 
-%table{width: '3000'}
-  %tr
+  %table.table_index{border: 1}
+    %tr
+      %th ユーザー名
+      %th 所属
+      %th
+    - @users.each do |user|
+      %tr
+        %td= user.name
+        %td= user.belongs
+        %td= link_to '削除', user_delete_path(user), method: :delete, data: {confirm: '削除しますか？'}
 
-    %td{valign: 'top'}
-      %table{border: 1}
-        %tr
-          %th ユーザー名
-          %th 所属
-          %th
-        - @users.each do |user|
-          %tr
-            %td= user.name
-            %td= user.belongs
-            %td= link_to '削除', user_delete_path(user), method: :delete, data: {confirm: '削除しますか？'}
+  %table.table_index{border: 1}
+    %tr
+      %th 便名
+      %th
+    - @lists.each do |list|
+      %tr
+        %td= link_to list.name, lists_show_path(id: list.id)
+        %td= link_to '削除', list_delete_path(list), method: :delete, data: {confirm: '削除しますか？'}
 
-    / %td{width: '30'}
-
-    %td{valign: 'top'}
-      %table{border: 1}
-        %tr
-          %th 便名
-          %th
-        - @lists.each do |list|
-          %tr
-            / %td= list.name
-            %td= link_to list.name, lists_show_path(id: list.id)
-            %td= link_to '削除', list_delete_path(list), method: :delete, data: {confirm: '削除しますか？'}
-
-    / %td{width: '30'}
-
-    %td{valign: 'top'}
-      %table{border: 1}
-        %tr
-          %th 便名
-          %th 項目名
-          %th File
-          %th URL
-          %th
-          %th
-        - @items.each do |item|
-          %tr
-            %td= item.list.name
-            %td= item.name
-            %td= link_to item.file, item.file.url, target: '_blank'
-            %td= link_to item.url, item.url, target: '_blank'
-            %td= link_to '編集', item_edit_path(item)
-            %td= link_to '削除', item_delete_path(item), method: :delete, data: {confirm: '削除しますか？'}
-
-
-
-
-
+  %table.table_index{border: 1}
+    %tr
+      %th 便名
+      %th 項目名
+      %th{width: 400} File
+      %th{width: 400} URL
+      %th
+      %th
+    - @items.each do |item|
+      %tr
+        - if @item_id_ck == '' || @item_id_ck != item.list_id
+          - n = @items.where(list_id: item.list_id).size
+          %td{rowspan: n}= item.list.name
+        %td= item.name
+        %td= link_to item.file, item.file.url, target: '_blank'
+        %td= link_to item.url, item.url, target: '_blank'
+        %td= link_to '編集', item_edit_path(item)
+        %td= link_to '削除', item_delete_path(item), method: :delete, data: {confirm: '削除しますか？'}
+        - @item_id_ck = item.list_id
