@@ -31,6 +31,9 @@
                 %tr
                   %td{width: '50px'}= msg.label :name, list.name + ':', id: 'flt_no'
                 %tr
+                  %td{width: '40px'}= msg.label :pln_num, 'PLN'
+                  %td{width: '120px'}= msg.text_field :pln_num, id: 'pln_num'
+                %tr
                   %td{width: '40px'}= msg.label :fuel, 'FUEL'
                   %td{width: '120px'}= msg.text_field :fuel, id: 'fuel'
                 %tr
@@ -44,6 +47,7 @@
       %tr{height: '80%'}
         %td{valign: 'top', width: '10%'}
           = f.hidden_field :ack_user, value: @user.name
+          = f.hidden_field :date, value: @select_date_pic
           = f.submit 'Acknowledgment', id: 'acknowledgment', disabled: 'disabled'
 
           %h5#sended= ''

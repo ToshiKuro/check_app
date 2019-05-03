@@ -21,3 +21,31 @@
 //   $('td#accept_ack').css('background','pink');
 //   $('h4#item_title').css('background','pink');
 // });
+
+$(function(){
+  $.ajax({
+  url: 'get_source', // 通信先のURL
+  type: 'get',    // 使用するHTTPメソッド
+  // success: function(data) {
+  //     alert("success");
+  // },
+  // error: function(data) {
+  //     alert("errror");
+  // }
+  });
+});
+
+$(function(){
+  setInterval(function(){
+    $.ajax({
+    url: 'get_source', // 通信先のURL
+    type: 'get',    // 使用するHTTPメソッド
+    // success: function(data) {
+    //     alert("success");
+    // },
+    // error: function(data) {
+    //     alert("errror");
+    // }
+    });
+  },900000);
+});

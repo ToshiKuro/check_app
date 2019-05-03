@@ -5,6 +5,7 @@ class CreateOwners < ActiveRecord::Migration[5.2]
       t.integer  :list_id
       t.integer  :source_id
       t.datetime :acknowledgment
+      t.string   :pln_num
       t.string   :fuel
       t.string   :fl
       t.string   :msg

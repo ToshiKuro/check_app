@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_041139) do
     t.integer "list_id"
     t.integer "source_id"
     t.datetime "acknowledgment"
+    t.string "pln_num"
     t.string "fuel"
     t.string "fl"
     t.string "msg"

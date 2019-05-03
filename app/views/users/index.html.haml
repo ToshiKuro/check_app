@@ -1,13 +1,16 @@
 %body{bgcolor: '#C0C0C0'}
 
-
-= form_for :user, url: users_show_path, method: :get do |f|
+= form_for :date_pic, url: users_index_path, method: :get do |f|
   %p
     = f.label :id, 'DATE： '
     = f.date_field :date_pic, value: @select_date_pic
+    = f.submit 'Select'
+
+= form_for :user, url: users_show_path, method: :get do |f|
   %p
     = f.label :id, 'PIC： '
-    = f.collection_select :id, User.distinct.order(:name), :id, :name, include_blank: :true
+    = f.hidden_field :date_pic, value: @select_date_pic
+    = f.collection_select :id, User.where(id: @users).distinct.order(:name), :id, :name, include_blank: :true
     = f.submit 'Select'
 
 %table{border: 1, height: 800, width: 1200}

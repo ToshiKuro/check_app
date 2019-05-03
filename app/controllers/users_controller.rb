@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @select_date_pic = params[:date_pic].nil? ? Time.now.strftime('%Y-%m-%d') : params[:date_pic]
+    @select_date_pic = params[:date_pic].nil? ? Time.now.strftime('%Y-%m-%d') : params[:date_pic][:date_pic]
+    @users = Owner.where(date: @select_date_pic).pluck(:user_id)
     render layout: 'normal'
   end
 
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user][:id])
     owner = Owner.where(date: params[:user][:date_pic], user_id: params[:user][:id])
     @lists = List.where(id: owner.pluck(:list_id)).distinct
-    @items = Item.where(id: owner.pluck(:list_id)).distinct
+    @items = Item.where(list_id: owner.pluck(:list_id)).distinct
     item_file = @items.select(:file)
     item_url  = @items.select(:url)
 
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
         @items_ck << @items.find_by(url: item.url)
       end
     end
-
+    # binding.pry
     render layout: 'normal'
   end
 
@@ -90,7 +91,7 @@ class UsersController < ApplicationController
   def acknowledgment
     @user = User.find_by(name: params[:ack_user])
     @items = Item.where(list_id: @user.lists).order(:name).group(:path)
-    owners = Owner.where(user_id: @user.id)
+    owners = Owner.where(user_id: @user.id, date: params[:date])
     owners.each do |owner|
       owner.update(acknowledgment: Time.current, fuel: params["#{owner.list_id}"][:fuel], fl: params["#{owner.list_id}"][:fl], msg: params[:msg])
     end

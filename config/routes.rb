@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get    'owners/login'
   get    'owners/acknowledgment', to: 'owners#acknowledgment'
   post   'owners/acknowledgment'
+  get    'owners/get_source'
 
 
   get    'lists',          to: 'lists#index'
