@@ -7,6 +7,15 @@ ready = ->
   $ ->
     if $('#center_top').text() == '＜運航管理者監視画面＞'
       id = setTimeout (->
+        $.ajax
+          url: 'get_source'
+          type: 'get'
+          # success: (data) ->
+          #   alert 'success'
+          #   return
+          # error: (data) ->
+          #   alert 'errror'
+          #   return
         location.reload()
         return
       ), 120000
@@ -14,6 +23,18 @@ ready = ->
         clearTimeout id
         return
   return
+
+  # $ ->
+  #   $.ajax
+  #     url: 'get_source'
+  #     type: 'get'
+  #     success: (data) ->
+  #       alert 'success'
+  #       return
+  #     error: (data) ->
+  #       alert 'errror'
+  #       return
+  #   return
 
   # $ ->
   #   if $('#center_top').text() == '＜運航管理者監視画面＞'
