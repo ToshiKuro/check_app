@@ -26,12 +26,12 @@ $(function(){
   $.ajax({
   url: 'get_source', // 通信先のURL
   type: 'get',    // 使用するHTTPメソッド
-  // success: function(data) {
-  //     alert("success");
-  // },
-  // error: function(data) {
-  //     alert("errror");
-  // }
+  success: function(data) {
+      alert("success");
+  },
+  error: function(data) {
+      alert("errror");
+  }
   });
 });
 
@@ -40,12 +40,12 @@ $(function(){
     $.ajax({
     url: 'get_source', // 通信先のURL
     type: 'get',    // 使用するHTTPメソッド
-    // success: function(data) {
-    //     alert("success");
-    // },
-    // error: function(data) {
-    //     alert("errror");
-    // }
+    success: function(data) {
+        alert("success");
+    },
+    error: function(data) {
+        alert("errror");
+    }
     });
   },900000);
 });
