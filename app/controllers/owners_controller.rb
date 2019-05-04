@@ -80,8 +80,8 @@ class OwnersController < ApplicationController
   end
 
   def get_source
-    select_date_from = DateTime.now - 5
-    select_date_to   = DateTime.now - 4
+    select_date_from = DateTime.now
+    select_date_to   = DateTime.now + 1
     (select_date_from..select_date_to).each do |date|
       select_date = date.strftime('%Y-%m-%d')
       SourceTable.get_table(select_date)
