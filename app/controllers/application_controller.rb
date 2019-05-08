@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource.belongs
     when 'foc'
+      select_date = DateTime.now.strftime('%Y-%m-%d')
+      SourceTable.get_table(select_date)
       owners_show_path
     when 'pic'
       users_index_path

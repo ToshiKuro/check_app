@@ -14,7 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
-//= require jquery_ujs
+// = require jquery_ujs
 //= require_tree .
 
 // $('input#acknowledgment').click(function(){
@@ -35,17 +35,29 @@
 //   });
 // });
 
-// $(function(){
-//   setInterval(function(){
-//     $.ajax({
-//     url: 'get_source', // 通信先のURL
-//     type: 'get',    // 使用するHTTPメソッド
-//     success: function(data) {
-//         alert("success");
-//     },
-//     error: function(data) {
-//         alert("errror");
-//     }
-//     });
-//   },900000);
-// });
+$(function(){
+  if ($('#center_top').text() == '＜運航管理者監視画面＞') {
+    setInterval((function get_data() {
+      $.ajax({
+      url: 'get_source', // 通信先のURL
+      type: 'get',    // 使用するHTTPメソッド
+      // success: function(data) {
+      // }
+      //   alert("success");
+      // },
+      // error: function(data) {
+      //   alert("errror");
+      });
+      return get_data;
+    }()), 60000);
+  }
+});
+
+
+$(function(){
+  if ($('#center_top').text() == '＜運航管理者監視画面＞') {
+    setInterval(function(){
+      location.reload()
+    },60000);
+  }
+});
