@@ -37,7 +37,7 @@
 
 $(function(){
   if ($('#center_top').text() == '＜運航管理者監視画面＞') {
-    setInterval((function get_data() {
+    id = setInterval((function get_data() {
       $.ajax({
       url: 'get_source', // 通信先のURL
       type: 'get',    // 使用するHTTPメソッド
@@ -49,7 +49,10 @@ $(function(){
       //   alert("errror");
       });
       return get_data;
-    }()), 60000);
+    }()), 120000);
+    $('input#source_button').click(function() {
+      clearInterval(id);
+    })
   }
 });
 
@@ -58,6 +61,6 @@ $(function(){
   if ($('#center_top').text() == '＜運航管理者監視画面＞') {
     setInterval(function(){
       location.reload()
-    },60000);
+    },120000);
   }
 });

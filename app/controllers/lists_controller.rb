@@ -11,6 +11,7 @@ class ListsController < ApplicationController
 
   def show
     @list = params[:id].nil? ? List.first : List.find(params[:id])
+    @items = @list.items.order(:id)
     @title = "<#{@list.name} チェク・リスト>"
   end
 

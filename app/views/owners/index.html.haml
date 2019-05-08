@@ -26,7 +26,11 @@
     %tr
       %th 便名
       %th 項目名
-      %th{width: 400} File
+      %th
+        %table
+          %tr
+            %td.left_file{width: 150} File
+            %td.right_file{width: 150}= link_to '＊ 全File削除', items_delete_file_all_path, method: :put, data: {confirm: '全便のファイルを削除しますか？'}, class: 'button_file_all'
       %th{width: 400} URL
       %th
       %th
@@ -36,7 +40,8 @@
           - n = @items.where(list_id: item.list_id).size
           %td{rowspan: n}= item.list.name
         %td= item.name
-        %td= link_to item.file, item.file.url, target: '_blank'
+        - file_name = item.file.filename.nil? ? '' : item.file.filename[/\/(.*)_/,1]
+        %td= link_to file_name, item.file.url, target: '_blank'
         %td= link_to item.url, item.url, target: '_blank'
         %td= link_to '編集', item_edit_path(item)
         %td= link_to '削除', item_delete_path(item), method: :delete, data: {confirm: '削除しますか？'}

@@ -21,20 +21,21 @@ class UsersController < ApplicationController
     item_file = @items.select(:file)
     item_url  = @items.select(:url)
 
-    @items_ck = []
+    items_ck = []
 
     item_file.each do |item|
       if !item[:file].blank?
-        @items_ck << @items.find_by(file: item[:file])
+        items_ck << @items.find_by(file: item[:file])
       end
     end
 
     item_url.each do |item|
       if !item.url.blank?
-        @items_ck << @items.find_by(url: item.url)
+        items_ck << @items.find_by(url: item.url)
       end
     end
-    # binding.pry
+
+    @items_ck = items_ck.sort_by {|name| name.name}
     render layout: 'normal'
   end
 
@@ -92,8 +93,13 @@ class UsersController < ApplicationController
     @user = User.find_by(name: params[:ack_user])
     @items = Item.where(list_id: @user.lists).order(:name).group(:path)
     owners = Owner.where(user_id: @user.id, date: params[:date])
+    binding.pry
     owners.each do |owner|
-      owner.update(acknowledgment: Time.current, fuel: params["#{owner.list_id}"][:fuel], fl: params["#{owner.list_id}"][:fl], msg: params[:msg])
+      owner.update(acknowledgment: Time.current,
+        pln_num: params["#{owner.list_id}"][:pln_num],
+        fuel: params["#{owner.list_id}"][:fuel],
+        fl: params["#{owner.list_id}"][:fl],
+        msg: params[:msg])
     end
     respond_to do |format|                                                  #respond_toメソッドで結果をどのフォーマットで返すかを指定
       format.html { render :show }

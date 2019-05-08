@@ -55,6 +55,8 @@ Rails.application.routes.draw do
   get    'items/:id/edit', to: 'items#edit',    as: 'item_edit'
   patch  'items/:id',      to: 'items#update',  as: 'item_update'
   delete 'items/:id',      to: 'items#destroy', as: 'item_delete'
+  put    'items/delete_file_all'
+  put    'items/delete_file'
 
   get    'uploader/index'
   get    'uploader/form'

@@ -19,3 +19,24 @@
 .table_index{
   margin-right: 20px;
 }
+
+.left_file{
+  text-align: right;
+}
+
+th.right_file{
+}
+
+.button_file_all{
+  /*height: 20px;*/
+  width: 80px;
+  font-size: 12px;
+  /*display: inline-block;*/
+  border-radius: 5px;
+  background-color: white;
+  padding: 1px;
+  text-decoration: none;
+  text-align: center;
+  color: red;
+  border: solid 1px silver;
+}

@@ -57,6 +57,27 @@ class ItemsController < ApplicationController
     end
   end
 
+  def delete_file
+    if current_user.try(:admin?)
+      list = List.find(params[:id])
+      list.items.update_all(file: nil)
+      redirect_to lists_show_path(id: list.id)
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
+  end
+
+  def delete_file_all
+    if current_user.try(:admin?)
+      Item.update_all(file: nil)
+      redirect_to owners_index_path
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'アクセス権限がありません'
+    end
+  end
+
   private
 
   def item_params
