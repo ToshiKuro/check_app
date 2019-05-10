@@ -6,11 +6,11 @@
   = f.submit :submit
 
 
-%table{border: 1, width: 1500}
+%table#owner_show{border: 1}
   %tr
     %th 日付
     / %th{width: 40} 確認
-    %th{width: 90} 承認
+    %th{width: 80} 承認
     %th PIC
     %th{width: 90}  MSG
     %th 便名
@@ -26,20 +26,20 @@
         / %td{rowspan: n, :style => 'text-align: center;'}
         /   %button#ck_button{type: 'button'} 確認
         - if owner.acknowledgment.blank?
-          %td#accept_ack{rowspan: n}= owner.acknowledgment
+          %td.accept_ack{rowspan: n}= owner.acknowledgment
         - else
-          %td#accept_ack{rowspan: n}= owner.acknowledgment.strftime("%Y-%m-%d %H:%M %Z")
+          %td.accept_ack{rowspan: n}= owner.acknowledgment.strftime("%Y-%m-%d %H:%M %Z")
         %td{rowspan: n}= User.find(owner.user_id).name
-        %td{rowspan: n}= owner[:msg]
+        %td.msg{rowspan: n}= owner[:msg]
       %td= link_to List.find(owner.list_id).name, lists_show_path(id: owner.list_id)
       %td= owner[:pln_num]
       %td= owner[:fuel]
       %td= owner[:fl]
       - List.find(owner.list_id).items.each do |item|
         - if !item.file.blank?
-          %td= link_to item.name, item.file.url, target: '_blank'
+          %td{width: 80}= link_to item.name, item.file.url, target: '_blank'
         - elsif !item.url.blank?
-          %td= link_to item.name, item.url, target: '_blank'
+          %td{width: 80}= link_to item.name, item.url, target: '_blank'
         - else
-          %td= item.name
+          %td{width: 80}= item.name
       - @user_id_ck = owner.user_id

@@ -93,7 +93,6 @@ class UsersController < ApplicationController
     @user = User.find_by(name: params[:ack_user])
     @items = Item.where(list_id: @user.lists).order(:name).group(:path)
     owners = Owner.where(user_id: @user.id, date: params[:date])
-    binding.pry
     owners.each do |owner|
       owner.update(acknowledgment: Time.current,
         pln_num: params["#{owner.list_id}"][:pln_num],

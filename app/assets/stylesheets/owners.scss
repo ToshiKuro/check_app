@@ -8,12 +8,17 @@
 }
 
 #select_flt{
-  width: 450px;
+  width: 500px;
+  margin-bottom: 5px;
+}
+
+table#owner_show{
+  width: auto;
 }
 
 #tables{
   display: flex;
-  width: 3000px;
+  /*width: 3000px;*/
 }
 
 .table_index{
@@ -25,6 +30,18 @@
 }
 
 th.right_file{
+}
+
+td.msg, td.accept_ack{
+  width: 90px;
+  white-space: normal;
+  word-break : break-all;
+}
+
+td.accept_ack{
+  width: 80px;
+  white-space: normal;
+  word-break : break-all;
 }
 
 .button_file_all{
