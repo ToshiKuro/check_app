@@ -7,7 +7,7 @@ class OwnersController < ApplicationController
     @title = '＜登録情報＞'
     @users = User.all.order(:name)
     @lists = List.all.order(:name)
-    @items = Item.all.order(:list_id)
+    @items = Item.all.order(:list_id, :id)
     @item_id_ck = ''
   end
 
@@ -41,10 +41,7 @@ class OwnersController < ApplicationController
     if current_user.try(:admin?)
       lists = params[:name].select {|k,v| v == "1" }      #check boxでcheckしたものを抽出
       lists.each do |list|
-        owner = Owner.new
-        owner.user_id = params[:owner][:id]
-        owner.list_id = List.find_by(name: list[0]).id
-        owner.save
+        Owner.create(user_id: params[:owner][:id],list_id: List.find_by(name: list[0]).id,date: params[:owner][:date])
       end
       redirect_to owners_show_path
     else

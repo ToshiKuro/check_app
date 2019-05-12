@@ -11,7 +11,7 @@ class SourceController < ApplicationController
       @select_date = params[:date]
       SourceTable.get_table(@select_date)
     end
-    @source = Source.where(col3: @select_date)
+    @source = Source.where(col3: @select_date).order(:col4, :col8)
     render 'index'
   end
 

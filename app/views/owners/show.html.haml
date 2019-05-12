@@ -35,7 +35,7 @@
       %td= owner[:pln_num]
       %td= owner[:fuel]
       %td= owner[:fl]
-      - List.find(owner.list_id).items.each do |item|
+      - List.find(owner.list_id).items.order(:list_id).each do |item|
         - if !item.file.blank?
           %td{width: 80}= link_to item.name, item.file.url, target: '_blank'
         - elsif !item.url.blank?
